@@ -158,7 +158,7 @@ elif page == "Report":
 
         description = st.text_area("Describe your problem")
 
-                submitted = st.form_submit_button("Submit Report")
+        submitted = st.form_submit_button("Submit Report")
 
     if submitted:
         if district.strip() and village.strip() and description.strip():
