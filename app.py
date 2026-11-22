@@ -267,36 +267,52 @@ elif page == "Help & Benefits":
     st.title("🏛️ Government Help Finder")
     st.subheader("Find Government Relief Schemes Across India")
 
-    states = [
-        "Andhra Pradesh", "Arunachal Pradesh",
-        "Assam", "Bihar", "Chhattisgarh",
-        "Goa", "Gujarat", "Haryana",
-        "Himachal Pradesh", "Jharkhand",
-        "Karnataka", "Kerala", "Madhya Pradesh",
-        "Maharashtra", "Manipur", "Meghalaya",
-        "Mizoram", "Nagaland", "Odisha",
-        "Punjab", "Rajasthan", "Sikkim",
-        "Tamil Nadu", "Telangana", "Tripura",
-        "Uttar Pradesh", "Uttarakhand",
-        "West Bengal", "Andaman and Nicobar Islands",
-        "Chandigarh", "Delhi", "Jammu and Kashmir",
-        "Ladakh", "Lakshadweep", "Puducherry"
+     
+states = [
+    "Andhra Pradesh", "Arunachal Pradesh",
+    "Assam", "Bihar", "Chhattisgarh",
+    "Goa", "Gujarat", "Haryana",
+    "Himachal Pradesh", "Jharkhand",
+    "Karnataka", "Kerala", "Madhya Pradesh",
+    "Maharashtra", "Manipur", "Meghalaya",
+    "Mizoram", "Nagaland", "Odisha",
+    "Punjab", "Rajasthan", "Sikkim",
+    "Tamil Nadu", "Telangana", "Tripura",
+    "Uttar Pradesh", "Uttarakhand",
+    "West Bengal", "Andaman and Nicobar Islands",
+    "Chandigarh", "Delhi", "Jammu and Kashmir",
+    "Ladakh", "Lakshadweep", "Puducherry"
+]
+
+state = st.selectbox("Select Your State / UT", states)
+
+districts = {
+    "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+    "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur"],
+    "Uttar Pradesh": ["Lucknow", "Varanasi", "Prayagraj", "Kanpur"],
+    "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
+    "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"]
+}
+
+district_list = districts.get(state, [])
+
+selected_district = st.selectbox(
+    "Select Your District",
+    district_list if district_list else ["District list coming soon"]
+)
+
+need = st.selectbox(
+    "What kind of help do you need?",
+    [
+        "Flood Damage",
+        "Crop Damage",
+        "House Damage",
+        "Livestock Loss",
+        "Food Assistance",
+        "Medical Assistance",
+        "Financial Assistance"
     ]
-
-    state = st.selectbox("Select Your State / UT", states)
-
-    need = st.selectbox(
-        "What kind of help do you need?",
-        [
-            "Flood Damage",
-            "Crop Damage",
-            "House Damage",
-            "Livestock Loss",
-            "Food Assistance",
-            "Medical Assistance",
-            "Financial Assistance"
-        ]
-    )
+)
 
     import urllib.parse
 
@@ -330,22 +346,35 @@ elif page == "Emergency Help Center":
     st.title("🚨 Emergency Help Center")
     st.subheader("State & District Wise Emergency Contacts")
 
-    states = [
-        "Andhra Pradesh", "Arunachal Pradesh", "Assam",
-        "Bihar", "Chhattisgarh", "Goa", "Gujarat",
-        "Haryana", "Himachal Pradesh", "Jharkhand",
-        "Karnataka", "Kerala", "Madhya Pradesh",
-        "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
-        "Nagaland", "Odisha", "Punjab", "Rajasthan",
-        "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
-        "Uttar Pradesh", "Uttarakhand", "West Bengal",
-        "Andaman and Nicobar Islands", "Chandigarh",
-        "Delhi", "Jammu and Kashmir", "Ladakh",
-        "Lakshadweep", "Puducherry"
-    ]
+    states = ["Andhra Pradesh",     "Arunachal Pradesh", "Assam",
+"Bihar", "Chhattisgarh", "Goa", "Gujarat","Haryana", 
+"Himachal Pradesh","Jharkhand",
+"Karnataka", "Kerala", 
+"Madhya Pradesh",
+"Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+"Nagaland", "Odisha",  "Punjab", "Rajasthan","Sikkim", 
+"Tamil Nadu", "Telangana", "Tripura",
+"Uttar Pradesh", "Uttarakhand", "West Bengal",
+"Andaman and Nicobar Islands", "Chandigarh","Delhi", 
+"Jammu and Kashmir", "Ladakh",
+"Lakshadweep", "Puducherry"]
 
     selected_state = st.selectbox(
         "Select Your State / UT", states
+    )
+    districts = {
+        "Gujarat": ["Ahmedabad",             "Surat", "Vadodara", "Rajkot"],
+        "Bihar": ["Patna", "Gaya",  "Muzaffarpur", "Bhagalpur"],
+        "Uttar Pradesh": ["Lucknow", "Varanasi",     "Prayagraj", "Kanpur"],
+        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
+        "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"]
+    }
+
+    district_list = districts.get(selected_state, [])
+
+    selected_district = st.selectbox(
+        "Select Your District",
+         district_list if district_list else ["District list coming soon"]
     )
 
     st.error("🚨 National Emergency Number: 112")
