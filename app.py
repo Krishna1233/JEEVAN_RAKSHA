@@ -414,7 +414,7 @@ elif page == "Emergency Help Center":
         "https://sachet.ndma.gov.in/"
     )
     
-        st.markdown("---")
+    st.markdown("---")
     st.subheader("🏛️ District Government Help")
 
     search_query = (
