@@ -326,7 +326,7 @@ elif page == "Help & Benefits":
     )
 
 
-elif page == "Emergency Help Center":
+ elif page == "Emergency Help     Center":
      st.title("🚨 Emergency Help Center")
      st.subheader("State & District Wise Emergency Contacts")
 
