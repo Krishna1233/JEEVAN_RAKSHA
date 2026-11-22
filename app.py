@@ -341,28 +341,12 @@ elif page == "Dashboard":
 
 
 
+
 elif page == "Admin Panel":
-    st.title("🔐 Secure Admin Panel")
+    st.title("🔐 Admin Report Management")
 
     if not st.session_state.get("admin_logged_in", False):
-
-        password = st.text_input(
-            "Admin Password",
-            type="password"
-        )
-
-        if st.button("Admin Login"):
-            import hmac
-
-            if hmac.compare_digest(
-                password,
-                st.secrets["ADMIN_PASSWORD"]
-            ):
-                st.session_state["admin_logged_in"] = True
-                st.success("Admin login successful!")
-                st.rerun()
-            else:
-                st.error("Incorrect Admin Password.")
+        st.warning("Please login to access Admin Panel.")
 
     else:
         st.success("Welcome, Admin!")
@@ -371,7 +355,81 @@ elif page == "Admin Panel":
             st.session_state["admin_logged_in"] = False
             st.rerun()
 
-        st.info("Admin access verified. Report management will be added next.")
+        st.divider()
+        st.subheader("📋 All Flood Reports")
+
+        try:
+            result = supabase.table("reports").select(
+                "ticket_id, district, village, damage_type, description, status, created_at"
+            ).order("created_at", desc=True).execute()
+
+            reports = result.data
+
+            if reports:
+                st.write("Total Reports:", len(reports))
+
+                ticket_options = [
+                    r["ticket_id"] for r in reports
+                ]
+
+                selected_ticket = st.selectbox(
+                    "Select Ticket ID",
+                    ticket_options
+                )
+
+                selected_report = next(
+                    r for r in reports
+                    if r["ticket_id"] == selected_ticket
+                )
+
+                st.subheader("Report Details")
+
+                st.write("District:", selected_report["district"])
+                st.write("Village:", selected_report["village"])
+                st.write("Damage Type:", selected_report["damage_type"])
+                st.write("Description:", selected_report["description"])
+                st.write("Current Status:", selected_report["status"])
+
+                st.divider()
+                st.subheader("Update Report Status")
+
+                new_status = st.selectbox(
+                    "Choose New Status",
+                    [
+                        "Submitted",
+                        "Under Review",
+                        "Verified",
+                        "Resolved"
+                    ],
+                    index=[
+                        "Submitted",
+                        "Under Review",
+                        "Verified",
+                        "Resolved"
+                    ].index(selected_report["status"])
+                )
+
+        
+                if st.button("Update Status"):
+                    if new_status != selected_report["status"]:
+                        from datetime import datetime, timezone
+
+                        supabase.table("reports").update({
+                            "status": new_status,
+                            "updated_at": datetime.now(timezone.utc).isoformat()
+                        }).eq(
+                            "ticket_id", selected_ticket
+                        ).execute()
+
+                        st.success("Report status updated successfully!")
+                        st.rerun()
+                    else:
+                        st.info("This report already has the selected status.")
+       
+
+        except Exception as e:
+            st.error("Unable to load or update reports.")
+            st.code(str(e))
 
 st.divider()
 
