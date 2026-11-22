@@ -3,16 +3,15 @@ import streamlit as st
 
 from supabase import create_client
 
-# Supabase Database Connection
-supabase = create_client(
-    st.secrets["SUPABASE_URL"],
-    st.secrets["SUPABASE_SECRET_KEY"]
-)
-
 st.set_page_config(
     page_title="JEEVANRAKSHA",
     page_icon="🛡️",
     layout="wide"
+)
+
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_SECRET_KEY"]
 )
 
 # Custom Design
@@ -75,44 +74,8 @@ else:
     track = "अपनी रिपोर्ट देखें"
     benefits = "सरकारी सहायता योजनाएँ"
     dashboard = "राहत डैशबोर्ड"
-    safety = "बाढ़ सुरक्षा जानकारी"
-
-
-if submitted:
-    if district.strip() and village.strip() and description.strip():
-        import uuid
-        import hashlib
-
-        ticket_id = "JVR-" + str(uuid.uuid4())[:8].upper()
-        access_code = str(uuid.uuid4().int % 1000000).zfill(6)
-
-        access_hash = hashlib.sha256(
-            access_code.encode()
-        ).hexdigest()
-
-        try:
-            supabase.table("reports").insert({
-                "ticket_id": ticket_id,
-                "access_code_hash": access_hash,
-                "district": district,
-                "village": village,
-                "damage_type": damage_type,
-                "description": description,
-                "status": "Submitted"
-            }).execute()
-
-            st.success("Your report has been saved successfully!")
-            st.write("Your Ticket ID:", ticket_id)
-            st.write("Your Private Access Code:", access_code)
-            st.warning("Save both details safely. Access Code will be shown only once.")
-
-        except Exception as e:
-            st.error("Report could not be saved. Please try again.")
-            st.error(str(e))
-
-    else:
-        st.warning("Please fill in all required fields.")
-
+    safety = "बाढ़ सुरक्षा जानकारी"  
+        
 
 # Sidebar Navigation
 st.sidebar.title("🛡️ JEEVANRAKSHA")
@@ -205,19 +168,42 @@ elif page == "Report":
 
         submitted = st.form_submit_button("Submit Report")
 
+     
     if submitted:
         if district.strip() and village.strip() and description.strip():
             import uuid
-            ticket_id = "JVR-" + str(uuid.uuid4())[:8].upper()
-            access_code = str(uuid.uuid4().int)[:6]
+            import hashlib
+            import secrets
 
-            st.success("Your report has been submitted!")
-            st.write("Your Ticket ID:", ticket_id)
-            st.write("Your Private Access Code:", access_code)
-            st.warning("Save both details safely. You will need them to track your report.")
+            ticket_id = "JVR-" + uuid.uuid4().hex[:12].upper()
+            access_code = secrets.token_urlsafe(12)
+
+            access_hash = hashlib.sha256(
+                access_code.encode()
+            ).hexdigest()
+
+            try:
+                supabase.table("reports").insert({
+                    "ticket_id": ticket_id,
+                    "access_code_hash": access_hash,
+                    "district": district.strip(),
+                    "village": village.strip(),
+                    "damage_type": damage_type,
+                    "description": description.strip(),
+                    "status": "Submitted"
+                }).execute()
+
+                st.success("Report saved successfully!")
+                st.write("Ticket ID:", ticket_id)
+                st.write("Private Access Code:", access_code)
+                st.warning("Save both details safely. Access Code will be shown only once.")
+
+            except Exception:
+                st.error("Report could not be saved. Please try again.")
+
         else:
             st.warning("Please fill in all required fields.")
-
+             
 elif page == "Track Report":
     st.title("🔐 " + track)
     st.write("Enter your Ticket ID and Private Access Code.")
