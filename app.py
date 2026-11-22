@@ -82,7 +82,14 @@ st.sidebar.title("🛡️ JEEVANRAKSHA")
 
 page = st.sidebar.radio(
     "Navigation",
-    ["Home", "Report", "Track Report", "Help & Benefits", "Dashboard"]
+    [
+        "Home",
+        "Report",
+        "Track Report",
+        "Help & Benefits",
+        "Dashboard",
+        "Admin Panel"
+    ]
 )
 
 # Home Page
@@ -300,6 +307,7 @@ elif page == "Dashboard":
         col4.metric("Verified", verified)
         col5.metric("Resolved", resolved)
 
+
         st.divider()
 
         st.subheader("Damage Type Overview")
@@ -330,6 +338,40 @@ elif page == "Dashboard":
 
     except Exception:
         st.error("Dashboard data could not be loaded.")
+
+
+
+elif page == "Admin Panel":
+    st.title("🔐 Secure Admin Panel")
+
+    if not st.session_state.get("admin_logged_in", False):
+
+        password = st.text_input(
+            "Admin Password",
+            type="password"
+        )
+
+        if st.button("Admin Login"):
+            import hmac
+
+            if hmac.compare_digest(
+                password,
+                st.secrets["ADMIN_PASSWORD"]
+            ):
+                st.session_state["admin_logged_in"] = True
+                st.success("Admin login successful!")
+                st.rerun()
+            else:
+                st.error("Incorrect Admin Password.")
+
+    else:
+        st.success("Welcome, Admin!")
+
+        if st.button("Logout"):
+            st.session_state["admin_logged_in"] = False
+            st.rerun()
+
+        st.info("Admin access verified. Report management will be added next.")
 
 st.divider()
 
