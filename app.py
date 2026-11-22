@@ -331,8 +331,8 @@ elif page == "Help & Benefits":
         "Kota", "Ajmer"
     ]
     }
-    
-    online_data =     get_india_districts()
+
+    online_data =   get_india_districts()
     st.write("Online District Data:", online_data)
     if online_data:
         districts = {
@@ -340,7 +340,8 @@ elif page == "Help & Benefits":
                 district["name"]
                 for district in    item["districts"]
             ]
-            for item in online_data
+            for item in 
+online_data
         }
     district_list =       districts.get(state, [])
 
