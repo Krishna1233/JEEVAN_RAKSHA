@@ -1,5 +1,6 @@
 
 import streamlit as st
+import requests
 import urllib.parse
 from supabase import create_client
 
