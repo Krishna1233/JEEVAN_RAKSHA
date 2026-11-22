@@ -413,6 +413,33 @@ elif page == "Emergency Help Center":
         "🇮🇳 NDMA Official Help Desk",
         "https://sachet.ndma.gov.in/"
     )
+    
+        st.markdown("---")
+    st.subheader("🏛️ District Government Help")
+
+    search_query = (
+        f"{selected_district} {selected_state} "
+        "official district administration website"
+    )
+
+    search_url = (
+        "https://www.google.com/search?q="
+        + urllib.parse.quote(search_query)
+    )
+
+    st.link_button(
+        "🔎 Find District Government Website",
+        search_url
+    )
+
+    st.link_button(
+        "🌐 NDMA State Helpdesk",
+        "https://sachet.ndma.gov.in/HelpDesk"
+    )
+
+    st.caption(
+        "Verify contact details on official government websites."
+    )
 
 elif page == "Dashboard":
     st.title("📊 Smart Relief Dashboard")
