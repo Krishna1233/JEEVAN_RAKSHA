@@ -263,9 +263,66 @@ elif page == "Track Report":
             st.warning("Please enter both Ticket ID and Access Code.")
 
 elif page == "Help & Benefits":
-    st.title("🏛️ " + benefits)
-    st.info("Verified government relief information will be added here.")
+    st.title("🏛️ Government Help Finder")
+    st.subheader("Find Government Relief Schemes Across India")
 
+    states = [
+        "Andhra Pradesh", "Arunachal Pradesh",
+        "Assam", "Bihar", "Chhattisgarh",
+        "Goa", "Gujarat", "Haryana",
+        "Himachal Pradesh", "Jharkhand",
+        "Karnataka", "Kerala", "Madhya Pradesh",
+        "Maharashtra", "Manipur", "Meghalaya",
+        "Mizoram", "Nagaland", "Odisha",
+        "Punjab", "Rajasthan", "Sikkim",
+        "Tamil Nadu", "Telangana", "Tripura",
+        "Uttar Pradesh", "Uttarakhand",
+        "West Bengal", "Andaman and Nicobar Islands",
+        "Chandigarh", "Delhi", "Jammu and Kashmir",
+        "Ladakh", "Lakshadweep", "Puducherry"
+    ]
+
+    state = st.selectbox("Select Your State / UT", states)
+
+    need = st.selectbox(
+        "What kind of help do you need?",
+        [
+            "Flood Damage",
+            "Crop Damage",
+            "House Damage",
+            "Livestock Loss",
+            "Food Assistance",
+            "Medical Assistance",
+            "Financial Assistance"
+        ]
+    )
+
+    import urllib.parse
+
+    st.write("### Government Information")
+
+    search_text = f"{need} {state} site:gov.in"
+    search_url = (
+        "https://www.google.com/search?q="
+        + urllib.parse.quote(search_text)
+    )
+
+    st.link_button("🔎 Search Government Information", search_url)
+
+    st.link_button(
+        "🇮🇳 myScheme Portal",
+        "https://www.myscheme.gov.in/"
+    )
+
+    st.link_button(
+        "🏛️ National Government Portal",
+        "https://www.india.gov.in/"
+    )
+
+    st.info(
+        "Check the official government website "
+        "for eligibility, documents and application details."
+    )
  
 elif page == "Dashboard":
     st.title("📊 Smart Relief Dashboard")
@@ -444,7 +501,7 @@ elif page == "Admin Panel":
 st.divider()
 
 st.caption(
-    "JEEVANRAKSHA | Gujarat Pilot | "
+    "JEEVANRAKSHA | all India | "
     "Demo Version | Not an official government service"
       )
   
