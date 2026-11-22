@@ -287,11 +287,30 @@ elif page == "Help & Benefits":
     state = st.selectbox("Select Your State / UT", states)
 
     districts = {
-    "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
-    "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur"],
-    "Uttar Pradesh": ["Lucknow", "Varanasi", "Prayagraj", "Kanpur"],
-    "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
-    "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"]
+    "Gujarat": [
+        "Ahmedabad", "Surat", "Vadodara",
+        "Rajkot", "Anand"
+    ],
+
+    "Bihar": [
+        "Patna", "Gaya", "Muzaffarpur",
+        "Bhagalpur", "Darbhanga"
+    ],
+
+    "Uttar Pradesh": [
+        "Prayagraj", "Lucknow", "Varanasi",
+        "Kanpur", "Gorakhpur"
+    ],
+
+    "Maharashtra": [
+        "Mumbai", "Pune", "Nagpur",
+        "Nashik", "Thane"
+    ],
+
+    "Rajasthan": [
+        "Jaipur", "Jodhpur", "Udaipur",
+        "Kota", "Ajmer"
+    ]
     }
 
     district_list =       districts.get(state, [])
