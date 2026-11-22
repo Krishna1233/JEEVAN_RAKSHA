@@ -399,7 +399,7 @@ elif page == "Emergency Help Center":
     st.error("🚨 National Emergency Number: 112")
     st.link_button("📞 Call Emergency 112", "tel:112")
 
-         st.subheader("📞 Other Emergency Helplines")
+    st.subheader("📞 Other Emergency Helplines")
 
     st.write("🌊 Disaster Relief: 1070")
     st.link_button("Call Disaster Helpline", "tel:1070")
