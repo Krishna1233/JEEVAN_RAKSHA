@@ -268,7 +268,7 @@ elif page == "Help & Benefits":
     st.subheader("Find Government Relief Schemes Across India")
 
      
-states = [
+    states = [
     "Andhra Pradesh", "Arunachal Pradesh",
     "Assam", "Bihar", "Chhattisgarh",
     "Goa", "Gujarat", "Haryana",
@@ -284,26 +284,26 @@ states = [
     "Ladakh", "Lakshadweep", "Puducherry"
 ]
 
-state = st.selectbox("Select Your State / UT", states)
+    state = st.selectbox("Select Your State / UT", states)
 
-districts = {
+    districts = {
     "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
     "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur"],
     "Uttar Pradesh": ["Lucknow", "Varanasi", "Prayagraj", "Kanpur"],
     "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
     "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"]
-}
+    }
 
-district_list = districts.get(state, [])
+    district_list =       districts.get(state, [])
 
-selected_district = st.selectbox(
-    "Select Your District",
+    selected_district = st.selectbox(
+        "Select Your District",
     district_list if district_list else ["District list coming soon"]
-)
+    )
 
-need = st.selectbox(
-    "What kind of help do you need?",
-    [
+    need = st.selectbox(
+       "What kind of help do you need?",
+     [
         "Flood Damage",
         "Crop Damage",
         "House Damage",
@@ -311,14 +311,14 @@ need = st.selectbox(
         "Food Assistance",
         "Medical Assistance",
         "Financial Assistance"
-    ]
-)
+     ]
+     )
 
     import urllib.parse
 
     st.write("### Government Information")
 
-    search_text = f"{need} {state} site:gov.in"
+    search_text = f"{need} {selected_district} {state} site:gov.in"
     search_url = (
         "https://www.google.com/search?q="
         + urllib.parse.quote(search_text)
@@ -346,7 +346,7 @@ elif page == "Emergency Help Center":
     st.title("🚨 Emergency Help Center")
     st.subheader("State & District Wise Emergency Contacts")
 
-    states = ["Andhra Pradesh",     "Arunachal Pradesh", "Assam",
+    states =["Andhra Pradesh",     "Arunachal Pradesh", "Assam",
 "Bihar", "Chhattisgarh", "Goa", "Gujarat","Haryana", 
 "Himachal Pradesh","Jharkhand",
 "Karnataka", "Kerala", 
@@ -357,7 +357,8 @@ elif page == "Emergency Help Center":
 "Uttar Pradesh", "Uttarakhand", "West Bengal",
 "Andaman and Nicobar Islands", "Chandigarh","Delhi", 
 "Jammu and Kashmir", "Ladakh",
-"Lakshadweep", "Puducherry"]
+"Lakshadweep", "Puducherry"
+    ]
 
     selected_state = st.selectbox(
         "Select Your State / UT", states
