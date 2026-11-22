@@ -77,9 +77,42 @@ else:
     dashboard = "राहत डैशबोर्ड"
     safety = "बाढ़ सुरक्षा जानकारी"
 
-# Temporary Report Storage
-if "reports" not in st.session_state:
-    st.session_state.reports = {}
+
+if submitted:
+    if district.strip() and village.strip() and description.strip():
+        import uuid
+        import hashlib
+
+        ticket_id = "JVR-" + str(uuid.uuid4())[:8].upper()
+        access_code = str(uuid.uuid4().int % 1000000).zfill(6)
+
+        access_hash = hashlib.sha256(
+            access_code.encode()
+        ).hexdigest()
+
+        try:
+            supabase.table("reports").insert({
+                "ticket_id": ticket_id,
+                "access_code_hash": access_hash,
+                "district": district,
+                "village": village,
+                "damage_type": damage_type,
+                "description": description,
+                "status": "Submitted"
+            }).execute()
+
+            st.success("Your report has been saved successfully!")
+            st.write("Your Ticket ID:", ticket_id)
+            st.write("Your Private Access Code:", access_code)
+            st.warning("Save both details safely. Access Code will be shown only once.")
+
+        except Exception as e:
+            st.error("Report could not be saved. Please try again.")
+            st.error(str(e))
+
+    else:
+        st.warning("Please fill in all required fields.")
+
 
 # Sidebar Navigation
 st.sidebar.title("🛡️ JEEVANRAKSHA")
