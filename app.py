@@ -422,11 +422,10 @@ elif page == "Emergency Help Center":
         "official district administration website"
     )
 
-    search_url = (
-        "https://www.google.com/search?q="
-        + urllib.parse.quote(search_query)
-    )
-
+     search_url = (
+    "https://www.google.com/search?q="
+    + urllib.parse.quote(search_query)
+     )
     st.link_button(
         "🔎 Find District Government Website",
         search_url
