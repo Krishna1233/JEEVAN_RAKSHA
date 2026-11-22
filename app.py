@@ -175,7 +175,17 @@ elif page == "Report":
 
 elif page == "Track Report":
     st.title("🔐 " + track)
-    st.info("Secure Ticket ID and Private Access Code feature is coming next.")
+    st.write("Enter your Ticket ID and Private Access Code.")
+
+    ticket = st.text_input("Ticket ID")
+    access = st.text_input("Private Access Code", type="password")
+
+    if st.button("Track My Report"):
+        st.warning(
+            "Report tracking database is not connected yet. "
+            "Your report details are currently demo-only."
+        )
+
 
 elif page == "Help & Benefits":
     st.title("🏛️ " + benefits)
