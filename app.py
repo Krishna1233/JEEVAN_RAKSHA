@@ -6,12 +6,20 @@ from supabase import create_client
 
 @st.cache_data(ttl=86400)
 def get_india_districts():
-    url = "https://raw.githubusercontent.com/codingmation/indian-states-districts/main/data/india_states_districts.min.json"
+    url = "https://raw.githubusercontent.com/CodingMation/indian-states-districts/main/data/india_states_districts.json"
+
     try:
-        response = requests.get(url, timeout=15)
+        response = requests.get(url, timeout=20)
         response.raise_for_status()
-        return response.json()
-    except Exception:
+        data = response.json()
+
+        if isinstance(data, list) and data:
+            return data
+
+        return None
+
+    except Exception as e:
+        st.error(f"District API Error: {e}")
         return None
 
 st.set_page_config(
