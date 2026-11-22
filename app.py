@@ -324,7 +324,16 @@ elif page == "Help & Benefits":
         "Kota", "Ajmer"
     ]
     }
+    online_data = get_india_districts()
 
+if online_data:
+    districts = {
+        item["name"]: [
+            district["name"]
+            for district in item["districts"]
+        ]
+        for item in online_data
+    }
     district_list =       districts.get(state, [])
 
     selected_district = st.selectbox(
