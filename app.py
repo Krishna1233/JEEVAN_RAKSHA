@@ -205,19 +205,55 @@ elif page == "Report":
         else:
             st.warning("Please fill in all required fields.")
              
+
 elif page == "Track Report":
     st.title("🔐 " + track)
     st.write("Enter your Ticket ID and Private Access Code.")
 
     ticket = st.text_input("Ticket ID")
-    access = st.text_input("Private Access Code", type="password")
+    access = st.text_input(
+        "Private Access Code",
+        type="password"
+    )
 
     if st.button("Track My Report"):
-        st.warning(
-            "Report tracking database is not connected yet. "
-            "Your report details are currently demo-only."
-        )
+        if ticket.strip() and access.strip():
+            import hashlib
 
+            access_hash = hashlib.sha256(
+                access.strip().encode()
+            ).hexdigest()
+
+            try:
+                result = supabase.table("reports").select(
+                    "ticket_id, district, village, damage_type, status, created_at"
+                ).eq(
+                    "ticket_id", ticket.strip()
+                ).eq(
+                    "access_code_hash", access_hash
+                ).execute()
+
+                if result.data:
+                    report = result.data[0]
+
+                    st.success("Report found successfully!")
+
+                    st.write("Ticket ID:", report["ticket_id"])
+                    st.write("District:", report["district"])
+                    st.write("Village / Area:", report["village"])
+                    st.write("Damage Type:", report["damage_type"])
+                    st.write("Current Status:", report["status"])
+
+                else:
+                    st.error(
+                        "Invalid Ticket ID or Private Access Code."
+                    )
+
+            except Exception:
+                st.error("Unable to track report. Please try again.")
+
+        else:
+            st.warning("Please enter both Ticket ID and Access Code.")
 
 elif page == "Help & Benefits":
     st.title("🏛️ " + benefits)
