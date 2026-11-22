@@ -1,6 +1,6 @@
 
 import streamlit as st
-
+import urllib.parse
 from supabase import create_client
 
 st.set_page_config(
@@ -333,7 +333,7 @@ elif page == "Help & Benefits":
      ]
      )
 
-    import urllib.parse
+   
 
     st.write("### Government Information")
 
@@ -422,10 +422,10 @@ elif page == "Emergency Help Center":
         "official district administration website"
     )
 
-     search_url = (
-    "https://www.google.com/search?q="
-    + urllib.parse.quote(search_query)
-     )
+    search_url = (
+      "https://www.google.com/search?q="
+        + urllib.parse.quote(search_query)
+    )
     st.link_button(
         "🔎 Find District Government Website",
         search_url
