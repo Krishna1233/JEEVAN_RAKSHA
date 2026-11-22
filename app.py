@@ -160,7 +160,7 @@ elif page == "Report":
      if submitted:
         if district.strip() and village.strip() and description.strip():
             st.success("Your report has been submitted successfully! (Demo only)")
-        else:
+     else:
             st.warning("Please fill in all required fields.")
 
      elif page == "Dashboard":
