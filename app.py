@@ -355,8 +355,7 @@ elif page == "Help & Benefits":
         "https://www.india.gov.in/"
     )
 
-    st.info(
-        "Check the official government website "
+    st.info("Check the official government website "
         "for eligibility, documents and application details."
     )
 
