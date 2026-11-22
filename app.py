@@ -1,6 +1,14 @@
 
 import streamlit as st
 
+from supabase import create_client
+
+# Supabase Database Connection
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_SECRET_KEY"]
+)
+
 st.set_page_config(
     page_title="JEEVANRAKSHA",
     page_icon="🛡️",
