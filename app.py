@@ -344,10 +344,10 @@ elif page =="Emergency Help     Center":
 
 selected_state = st.selectbox("Select Your State / UT", states)
 
-    st.error("🚨 National Emergency Number: 112")
-    st.link_button("📞 Call Emergency 112", "tel:112")
+     st.error("🚨 National  Emergency Number:112")
+     st.link_button("📞 Call Emergency 112","tel:112")
 
-    st.info(
+     st.info(
         "State and District-wise official emergency contacts "
         "will be displayed here after verification."
     )
