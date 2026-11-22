@@ -158,13 +158,20 @@ elif page == "Report":
 
         description = st.text_area("Describe your problem")
 
-        submitted = st.form_submit_button("Submit Report")
+                submitted = st.form_submit_button("Submit Report")
 
-        if submitted:
-            if district.strip() and village.strip() and description.strip():
-                st.success("Your report has been submitted successfully! (Demo only)")
-            else:
-                st.warning("Please fill in all required fields.")
+    if submitted:
+        if district.strip() and village.strip() and description.strip():
+            import uuid
+            ticket_id = "JVR-" + str(uuid.uuid4())[:8].upper()
+            access_code = str(uuid.uuid4().int)[:6]
+
+            st.success("Your report has been submitted!")
+            st.write("Your Ticket ID:", ticket_id)
+            st.write("Your Private Access Code:", access_code)
+            st.warning("Save both details safely. You will need them to track your report.")
+        else:
+            st.warning("Please fill in all required fields.")
 
 elif page == "Track Report":
     st.title("🔐 " + track)
