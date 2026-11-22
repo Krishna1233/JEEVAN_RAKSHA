@@ -144,36 +144,8 @@ if page == "Home":
     )
 
 elif page == "Report":
-     st.title("📝 Report Flood Damage")
-     st.write("Submit your flood damage and assistance request.")
-
-     with st.form("flood_report_form"):
-        district = st.text_input("District")
-        village = st.text_input("Village / Area")
-        damage_type = st.selectbox(
-            "Type of Damage",
-            ["House", "Crop", "Livestock", "Other"]
-        )
-        description = st.text_area("Describe your problem")
-        submitted = st.form_submit_button("Submit Report")
-
-     if submitted:
-        if district.strip() and village.strip() and description.strip():
-            st.success("Your report has been submitted successfully! (Demo only)")
-     else:
-            st.warning("Please fill in all required fields.")
-
-     elif page == "Dashboard":
-     st.title("📊 " + dashboard)
-     st.info("Area-level relief dashboard will be developed next.")
-
-st.divider()
-
-st.caption(
-    "JEEVANRAKSHA | Gujarat Pilot | "
-    "Demo Version | Not an official government service"
-      )
-
+    st.title("📝 " + report)
+    st.info("Flood damage reporting feature will be developed next.")
 elif page == "Track Report":
     st.title("🔐 " + track)
     st.info("Secure Ticket ID and Private Access Code feature is coming next.")
