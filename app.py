@@ -400,11 +400,16 @@ elif page == "Emergency Help Center":
     st.error("🚨 National Emergency Number: 112")
     st.link_button("📞 Call Emergency 112", "tel:112")
 
-    st.info(
-        "State and District-wise official emergency contacts "
-        "will be displayed here after verification."
-    )
+         st.subheader("📞 Other Emergency Helplines")
 
+    st.write("🌊 Disaster Relief: 1070")
+    st.link_button("Call Disaster Helpline", "tel:1070")
+
+    st.write("🚑 National Ambulance: 102")
+    st.link_button("Call Ambulance", "tel:102")
+
+    st.write("🔥 Fire Emergency: 101")
+    st.link_button("Call Fire Service", "tel:101")
     st.link_button(
         "🇮🇳 NDMA Official Help Desk",
         "https://sachet.ndma.gov.in/"
