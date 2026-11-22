@@ -259,9 +259,77 @@ elif page == "Help & Benefits":
     st.title("🏛️ " + benefits)
     st.info("Verified government relief information will be added here.")
 
+ 
 elif page == "Dashboard":
-    st.title("📊 " + dashboard)
-    st.info("Area-level relief dashboard will be developed next.")
+    st.title("📊 Smart Relief Dashboard")
+    st.write("Live overview of flood damage reports.")
+
+    try:
+        result = supabase.table("reports").select(
+            "district, damage_type, status"
+        ).execute()
+
+        reports = result.data
+
+        total = len(reports)
+
+        submitted_count = sum(
+            1 for r in reports if r["status"] == "Submitted"
+        )
+
+        under_review = sum(
+            1 for r in reports if r["status"] == "Under Review"
+        )
+
+        verified = sum(
+            1 for r in reports if r["status"] == "Verified"
+        )
+
+        resolved = sum(
+            1 for r in reports if r["status"] == "Resolved"
+        )
+
+        col1, col2, col3 = st.columns(3)
+
+        col1.metric("Total Reports", total)
+        col2.metric("Submitted", submitted_count)
+        col3.metric("Under Review", under_review)
+
+        col4, col5 = st.columns(2)
+
+        col4.metric("Verified", verified)
+        col5.metric("Resolved", resolved)
+
+        st.divider()
+
+        st.subheader("Damage Type Overview")
+
+        damage_counts = {}
+
+        for r in reports:
+            damage = r["damage_type"]
+            damage_counts[damage] = damage_counts.get(damage, 0) + 1
+
+        if damage_counts:
+            st.bar_chart(damage_counts)
+        else:
+            st.info("No reports available yet.")
+
+        st.divider()
+
+        st.subheader("District-wise Reports")
+
+        district_counts = {}
+
+        for r in reports:
+            district = r["district"]
+            district_counts[district] = district_counts.get(district, 0) + 1
+
+        if district_counts:
+            st.bar_chart(district_counts)
+
+    except Exception:
+        st.error("Dashboard data could not be loaded.")
 
 st.divider()
 
