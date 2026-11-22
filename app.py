@@ -4,6 +4,17 @@ import requests
 import urllib.parse
 from supabase import create_client
 
+@st.cache_data(ttl=86400)
+def get_india_districts():
+    url = "https://raw.githubusercontent.com/codingmation/indian-states-districts/main/data/india_states_districts.min.json"
+
+    try:
+        response = requests.get(url, timeout=15)
+        response.raise_for_status()
+        return response.json()
+    except Exception:
+        return None
+
 st.set_page_config(
     page_title="JEEVANRAKSHA",
     page_icon="🛡️",
