@@ -325,8 +325,7 @@ elif page == "Help & Benefits":
         "for eligibility, documents and application details."
     )
 
-
- elif page == "Emergency Help     Center":
+elif page =="Emergency Help     Center":
      st.title("🚨 Emergency Help Center")
      st.subheader("State & District Wise Emergency Contacts")
 
