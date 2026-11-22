@@ -87,6 +87,7 @@ page = st.sidebar.radio(
         "Report",
         "Track Report",
         "Help & Benefits",
+        "Emergency Help Center",
         "Dashboard",
         "Admin Panel"
     ]
@@ -323,7 +324,25 @@ elif page == "Help & Benefits":
         "Check the official government website "
         "for eligibility, documents and application details."
     )
- 
+
+
+elif page == "Emergency Help Center":
+    st.title("🚨 Emergency Help Center")
+    st.subheader("State & District Wise Emergency Contacts")
+
+    st.error("🚨 National Emergency Number: 112")
+    st.link_button("📞 Call Emergency 112", "tel:112")
+
+    st.info(
+        "State and District-wise official emergency contacts "
+        "will be displayed here after verification."
+    )
+
+    st.link_button(
+        "🇮🇳 NDMA Official Help Desk",
+        "https://sachet.ndma.gov.in/"
+    )
+
 elif page == "Dashboard":
     st.title("📊 Smart Relief Dashboard")
     st.write("Live overview of flood damage reports.")
