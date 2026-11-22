@@ -339,14 +339,24 @@ elif page == "Dashboard":
     except Exception:
         st.error("Dashboard data could not be loaded.")
 
-
-
-
 elif page == "Admin Panel":
     st.title("🔐 Admin Report Management")
 
     if not st.session_state.get("admin_logged_in", False):
-        st.warning("Please login to access Admin Panel.")
+        st.subheader("Admin Login")
+
+        admin_password = st.text_input(
+            "Enter Admin Password",
+            type="password"
+        )
+
+        if st.button("Login"):
+            if admin_password == st.secrets["ADMIN_PASSWORD"]:
+                st.session_state["admin_logged_in"] = True
+                st.success("Login successful!")
+                st.rerun()
+            else:
+                st.error("Incorrect Admin Password.")
 
     else:
         st.success("Welcome, Admin!")
