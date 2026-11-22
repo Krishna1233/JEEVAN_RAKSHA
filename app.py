@@ -327,8 +327,23 @@ elif page == "Help & Benefits":
 
 
 elif page == "Emergency Help Center":
-    st.title("🚨 Emergency Help Center")
-    st.subheader("State & District Wise Emergency Contacts")
+     st.title("🚨 Emergency Help Center")
+     st.subheader("State & District Wise Emergency Contacts")
+
+     states = ["Andhra Pradesh",    "Arunachal Pradesh", "Assam",
+       "Bihar", "Chhattisgarh", "Goa", "Gujarat",
+       "Haryana", "Himachal Pradesh", "Jharkhand",
+       "Karnataka", "Kerala", "Madhya Pradesh",
+       "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+       "Nagaland", "Odisha", "Punjab", "Rajasthan",
+       "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
+       "Uttar Pradesh", "Uttarakhand", "West Bengal",
+       "Andaman and Nicobar Islands", "Chandigarh",
+       "Delhi", "Jammu and Kashmir", "Ladakh",
+       "Lakshadweep", "Puducherry"
+]
+
+selected_state = st.selectbox("Select Your State / UT", states)
 
     st.error("🚨 National Emergency Number: 112")
     st.link_button("📞 Call Emergency 112", "tel:112")
