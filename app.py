@@ -143,9 +143,16 @@ if page == "Home":
         "not an official government portal."
     )
 
-elif page == "Report":
-    st.title("📝 " + report)
-    st.info("Flood damage reporting feature will be developed next.")
+elif page == "Dashboard":
+    st.title("📊 " + dashboard)
+    st.info("Area-level relief dashboard will be developed next.")
+
+st.divider()
+
+st.caption(
+    "JEEVANRAKSHA | Gujarat Pilot | "
+    "Demo Version | Not an official government service"
+      )
 
 elif page == "Track Report":
     st.title("🔐 " + track)
