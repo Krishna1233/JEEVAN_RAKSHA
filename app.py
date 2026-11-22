@@ -69,6 +69,10 @@ else:
     dashboard = "राहत डैशबोर्ड"
     safety = "बाढ़ सुरक्षा जानकारी"
 
+# Temporary Report Storage
+if "reports" not in st.session_state:
+    st.session_state.reports = {}
+
 # Sidebar Navigation
 st.sidebar.title("🛡️ JEEVANRAKSHA")
 
