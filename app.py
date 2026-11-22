@@ -198,8 +198,9 @@ elif page == "Report":
                 st.write("Private Access Code:", access_code)
                 st.warning("Save both details safely. Access Code will be shown only once.")
 
-            except Exception:
-                st.error("Report could not be saved. Please try again.")
+            except Exception as e:
+                st.error("Report could not be saved.")
+                st.code(str(e))
 
         else:
             st.warning("Please fill in all required fields.")
