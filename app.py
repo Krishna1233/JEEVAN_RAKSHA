@@ -410,13 +410,24 @@ elif page == "Emergency Help Center":
     selected_state = st.selectbox(
         "Select Your State / UT", states
     )
-    districts = {
-        "Gujarat": ["Ahmedabad",             "Surat", "Vadodara", "Rajkot"],
-        "Bihar": ["Patna", "Gaya",  "Muzaffarpur", "Bhagalpur"],
-        "Uttar Pradesh": ["Lucknow", "Varanasi",     "Prayagraj", "Kanpur"],
-        "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
-        "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"]
-    }
+         online_data = get_india_districts()
+
+    if online_data:
+        districts = {
+            item["name"]: [
+                district["name"]
+                for district in item["districts"]
+            ]
+            for item in online_data
+        }
+    else:
+        districts = {
+            "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+            "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur"],
+            "Uttar Pradesh": ["Lucknow", "Varanasi", "Prayagraj", "Kanpur"],
+            "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
+            "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota"]
+        }
 
     district_list = districts.get(selected_state, [])
 
