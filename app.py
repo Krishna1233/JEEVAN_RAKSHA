@@ -124,18 +124,36 @@ else:
 # Sidebar Navigation
 st.sidebar.title("🛡️ JEEVANRAKSHA")
 
+page_names = {
+    "Home": "Home",
+    "Report": "Report",
+    "Track Report": "Track Report",
+    "Help & Benefits": "Help & Benefits",
+    "Emergency Help Center": "Emergency Help Center",
+    "Dashboard": "Dashboard",
+    "Admin Panel": "Admin Panel"
+}
+
+if language == "हिंदी":
+    page_names = {
+        "Home": "होम",
+        "Report": "रिपोर्ट दर्ज करें",
+        "Track Report": "रिपोर्ट ट्रैक करें",
+        "Help & Benefits": "सहायता और लाभ",
+        "Emergency Help Center": "आपातकालीन सहायता",
+        "Dashboard": "राहत डैशबोर्ड",
+        "Admin Panel": "एडमिन पैनल"
+    }
+
 page = st.sidebar.radio(
-    "Navigation",
-    [
-        "Home",
-        "Report",
-        "Track Report",
-        "Help & Benefits",
-        "Emergency Help Center",
-        "Dashboard",
-        "Admin Panel"
-    ]
+    "Navigation / नेविगेशन",
+    list(page_names.values())
 )
+
+page = {
+    display: original
+    for original, display in page_names.items()
+}[page]
 
 # Home Page
 if page == "Home":
