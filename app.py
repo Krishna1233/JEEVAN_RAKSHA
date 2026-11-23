@@ -291,8 +291,8 @@ elif page == "Track Report":
 "Invalid Ticket ID or Private Access Code."
                     )
 
-           except Exception:
-               st.error("Unable to track report. Please try again.")
+            except Exception:
+                st.error("Unable to track report. Please try again.")
 
         else:
             st.warning("Please enter both Ticket ID and Access Code.")
