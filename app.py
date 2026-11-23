@@ -357,8 +357,8 @@ need = st.selectbox(
 
 st.write("### Government Information")
 
-    search_text = f"{need} {selected_district} {state} site:gov.in"
-    search_url = (
+search_text = f"{need} {selected_district} {state} site:gov.in"
+search_url = (
         "https://www.google.com/search?q="
         + urllib.parse.quote(search_text)
     )
