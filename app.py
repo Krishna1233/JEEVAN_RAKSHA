@@ -400,6 +400,15 @@ elif page == "Help & Benefits":
 elif page == "Emergency Help Center":
     st.title("🚨 Emergency Help Center")
     st.subheader("State & District Wise Emergency Contacts")
+    with st.expander("🛡️ Flood Emergency Safety Checklist"):
+        st.warning("बाढ़ के दौरान अपनी सुरक्षा का ध्यान रखें।")
+
+        st.checkbox("बिजली के खंभों और खुले तारों से दूर रहें")
+        st.checkbox("गहरे बाढ़ के पानी में न उतरें")
+        st.checkbox("जरूरी दवाइयाँ और दस्तावेज सुरक्षित रखें")
+        st.checkbox("बच्चों और बुजुर्गों को सुरक्षित स्थान पर रखें")
+        st.checkbox("पीने के लिए सुरक्षित पानी इस्तेमाल करें")
+        st.checkbox("आपातकाल में 112 पर कॉल करें")
 
     states =["Andhra Pradesh",     "Arunachal Pradesh", "Assam",
 "Bihar", "Chhattisgarh", "Goa", "Gujarat","Haryana", 
