@@ -356,19 +356,26 @@ need = st.selectbox(
    
 
 st.write("### Government Information")
+    
+    search_text = f"{need} {selected_district} {state} site:gov.in"
 
-search_text = f"{need} {selected_district} {state} site:gov.in"
-search_url = (
+    search_url = (
         "https://www.google.com/search?q="
         + urllib.parse.quote(search_text)
     )
 
-st.link_button("🔎 Search Government Information", search_url)
+    st.link_button("🔎 Search Government Information", search_url)
 
-st.link_button(
+    st.link_button(
         "🇮🇳 myScheme Portal",
         "https://www.myscheme.gov.in/"
     )
+
+    st.link_button(
+        "🇮🇳 National Portal of India",
+        "https://www.india.gov.in/"
+    )
+
 
 st.link_button(
         "🏛️ National Government Portal",
