@@ -384,7 +384,6 @@ elif page == "Help & Benefits":
         "for eligibility, documents and application details."
     )
 
-     
 elif page == "Emergency Help Center":
     st.title("🚨 Emergency Help Center")
     st.subheader("State & District Wise Emergency Contacts")
@@ -406,7 +405,16 @@ elif page == "Emergency Help Center":
     selected_state = st.selectbox(
         "Select Your State / UT", states
     )
-         online_data=get_india_districts()
+    online_data=
+get_iselected_state = st.selectbox(
+        "Select Your State / UT", states
+    )
+  online_data=get_india_districts()
+
+    if online_data:
+        districts = {
+            item["name"]: [
+                districtndia_districts()
 
     if online_data:
         districts = {
