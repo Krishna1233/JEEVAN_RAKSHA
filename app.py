@@ -700,8 +700,8 @@ elif page == "Admin Panel":
                     for district, counts in district_data.items()
                 }       
 
-                st.bar_chart(chart
-_data)
+                st.bar_chart(
+chart_data)
 
                 high_count = sum(
                     1 for r in reports if r["priority"] == "High"
