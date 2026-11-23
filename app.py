@@ -332,8 +332,8 @@ elif page == "Help & Benefits":
     ]
     }
 
-    online_data
-=get_india_districts()
+    online_data=get_india
+_districts()
     if online_data:
         districts = {
             item["name"]: [
