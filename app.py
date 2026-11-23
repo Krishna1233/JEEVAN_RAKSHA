@@ -332,7 +332,7 @@ elif page == "Help & Benefits":
     ]
     }
 
-    online_data =   get_india_districts()
+online_data =   get_india_districts()
     st.write("Online District Data:", online_data)
     if online_data:
         districts = {
