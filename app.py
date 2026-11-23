@@ -332,28 +332,26 @@ elif page == "Help & Benefits":
         "Select Your District",
         district_list if district_list else ["District list coming soon"]
     )
+    
+    district_list = districts.get(state, [])
 
-district_list=     districts.get(state, [])
-
-selected_district = st.selectbox(
-     "Select Your District",
-    district_list if district_list else ["District list coming soon"]
+    selected_district = st.selectbox(
+        "Select Your District",
+        district_list if district_list else ["District list coming soon"]
     )
 
     need = st.selectbox(
-       "What kind of help do you need?",
-     [
-        "Flood Damage",
-        "Crop Damage",
-        "House Damage",
-        "Livestock Loss",
-        "Food Assistance",
-        "Medical Assistance",
-        "Financial Assistance"
-     ]
-     )
-
-   
+        "What kind of help do you need?",
+        [
+            "Flood Damage",
+            "Crop Damage",
+            "House Damage",
+            "Livestock Loss",
+            "Food Assistance",
+            "Medical Assistance",
+            "Financial Assistance"
+        ]
+    )
 
     st.write("### Government Information")
     
