@@ -441,13 +441,12 @@ elif page == "Emergency Help Center":
 
     district_list = districts.get(selected_state, [])
 
-    selected_district = st.selectbox(
-        "Select Your District"
-
-(Emergency)",
+    selected_district=(
+        st.selectbox(
+       "Emergency District",
          district_list if district_list else ["District list coming soon"]
+        )
     )
-
     st.error("🚨 National Emergency Number: 112")
     st.link_button("📞 Call Emergency 112", "tel:112")
 
