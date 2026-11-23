@@ -131,6 +131,7 @@ page_names = {
     "Help & Benefits": "Help & Benefits",
     "Donation & Support":"Donation & Support",
     "Emergency Help Center": "Emergency Help Center",
+    "Resource Matching":"Resource Matching",
     "Dashboard": "Dashboard",
     "Admin Panel": "Admin Panel"
 }
@@ -759,6 +760,75 @@ elif page == "Emergency Help Center":
         "Keep emergency supplies in a safe, waterproof bag "
         "and follow official safety instructions."
     )
+
+
+elif page == "Resource Matching":
+
+    st.title("🤝 Need & Resource Matching")
+    st.write("Connect people in need with available relief resources.")
+
+    st.subheader("📢 Register a Need")
+
+    need = st.selectbox(
+        "What support is needed?",
+        ["Food", "Drinking Water", "Clothes",
+         "Medicines", "Shelter", "Other"]
+    )
+
+    district = st.text_input("Enter District")
+    quantity = st.number_input(
+        "Required Quantity",
+        min_value=1,
+        step=1
+    )
+
+    if st.button("Submit Need"):
+        if district.strip():
+            st.success(
+                f"Need recorded: {quantity} units of {need} in {district}."
+            )
+            st.info(
+                "This is a demo entry. It is not yet saved "
+                "or matched with a real donor."
+            )
+        else:
+            st.warning("Please enter your district.")
+
+    st.divider()
+
+    st.subheader("🎁 Register Available Resources")
+
+    resource = st.selectbox(
+        "What can you provide?",
+        ["Food", "Drinking Water", "Clothes",
+         "Medicines", "Shelter", "Other"],
+        key="resource_type"
+    )
+
+    resource_district = st.text_input(
+        "Your District",
+        key="resource_district"
+    )
+
+    available_quantity = st.number_input(
+        "Available Quantity",
+        min_value=1,
+        step=1,
+        key="available_quantity"
+    )
+
+    if st.button("Submit Available Resource"):
+        if resource_district.strip():
+            st.success(
+                f"{available_quantity} units of {resource} "
+                f"offered in {resource_district}."
+            )
+            st.info(
+                "This is a demo entry. It is not yet saved "
+                "or matched with a real person."
+            )
+        else:
+            st.warning("Please enter your district.")
 
 elif page == "Dashboard":
     st.title("📊 Smart Relief Dashboard")
