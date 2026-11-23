@@ -155,6 +155,10 @@ page = {
     for original, display in page_names.items()
 }[page]
 
+if "quick_page" in st.session_state:
+    page = st.session_state.quick_page
+    del st.session_state.quick_page
+
 # Home Page
 if page == "Home":
 
@@ -559,7 +563,27 @@ elif page == "Emergency Help Center":
 elif page == "Dashboard":
     st.title("📊 Smart Relief Dashboard")
     st.write("Live overview of flood damage reports.")
+    st.subheader("🚀 Quick Access")
 
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("📝 Report Damage", use_container_width=True):
+            st.session_state.quick_page = "Report"
+            st.rerun()
+
+        if st.button("🔍 Track Report", use_container_width=True):
+            st.session_state.quick_page = "Track Report"
+            st.rerun()
+
+    with col2:
+        if st.button("🆘 Emergency Help", use_container_width=True):
+            st.session_state.quick_page = "Emergency Help Center"
+            st.rerun()
+
+        if st.button("🤝 Help & Benefits", use_container_width=True):
+            st.session_state.quick_page = "Help & Benefits"
+            st.rerun()
     try:
         result = supabase.table("reports").select(
             "district, damage_type, status"
