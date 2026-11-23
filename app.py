@@ -401,21 +401,12 @@ elif page == "Emergency Help Center":
 "Jammu and Kashmir", "Ladakh",
 "Lakshadweep", "Puducherry"
     ]
-
+    
     selected_state = st.selectbox(
         "Select Your State / UT", states
     )
-    online_data=
-get_iselected_state = st.selectbox(
-        "Select Your State / UT", states
-    )
-     online_data=
-get_india_districts()
 
-    if online_data:
-        districts = {
-            item["name"]: [
-                districtndia_districts()
+    online_data = get_india_districts()
 
     if online_data:
         districts = {
@@ -425,6 +416,7 @@ get_india_districts()
             ]
             for item in online_data
         }
+     
     else:
         districts = {
             "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
