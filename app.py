@@ -795,7 +795,59 @@ elif page == "Dashboard":
             use_container_width=True,
             on_click=go_to_page,
             args=("Help & Benefits",)
-        )     
+        )  
+
+
+    st.divider()
+    st.subheader("📊 Relief Transparency Board")
+
+    try:
+        transparency_result = (
+            supabase.table("reports")
+            .select("status")
+            .execute()
+        )
+
+        transparency_reports = transparency_result.data or []
+
+        total_reports = len(transparency_reports)
+
+        pending_reports = sum(
+            1 for r in transparency_reports
+            if r.get("status") == "Submitted"
+        )
+
+        review_reports = sum(
+            1 for r in transparency_reports
+            if r.get("status") == "Under Review"
+        )
+
+        resolved_reports = sum(
+            1 for r in transparency_reports
+            if r.get("status") == "Resolved"
+        )
+
+        resolution_rate = (
+            resolved_reports / total_reports * 100
+            if total_reports > 0 else 0
+        )
+
+        c1, c2, c3, c4 = st.columns(4)
+
+        c1.metric("Total Reports", total_reports)
+        c2.metric("Pending", pending_reports)
+        c3.metric("Under Review", review_reports)
+        c4.metric("Resolved", resolved_reports)
+
+        st.progress(resolution_rate / 100)
+
+        st.caption(
+            f"Resolution Rate: {resolution_rate:.1f}%"
+        )
+
+    except Exception:
+        st.warning("Transparency data is currently unavailable.")
+  
     try:
         result = supabase.table("reports").select(
             "district, damage_type, status"
