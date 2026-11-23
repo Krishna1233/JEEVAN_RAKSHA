@@ -377,12 +377,12 @@ st.write("### Government Information")
     )
 
 
-st.link_button(
+    st.link_button(
         "🏛️ National Government Portal",
-        "https://www.india.gov.in/"
+       "https://www.india.gov.in/"
     )
 
-st.info("Check the official government website "
+    st.info("Check the official government website "
         "for eligibility, documents and application details."
     )
 
