@@ -264,7 +264,7 @@ elif page == "Report":
         village = st.text_input("Village / Area")
 
          
-damage_type = st.selectbox(
+    damage_type = st.selectbox(
     "Select Problem Type",
     [
         "Flood / Waterlogging",
@@ -276,11 +276,11 @@ damage_type = st.selectbox(
         "Drainage Problem",
         "Other Civic Issues"
     ]
-)
+    )
 
-        description = st.text_area("Describe your problem")
+    description = st.text_area("Describe your problem")
 
-        submitted = st.form_submit_button("Submit Report")
+    submitted = st.form_submit_button("Submit Report")
 
      
     if submitted:
