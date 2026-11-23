@@ -355,9 +355,9 @@ need = st.selectbox(
 
    
 
-st.write("### Government Information")
+    st.write("### Government Information")
     
-    search_text = f"{need} {selected_district} {state} site:gov.in"
+    search_text =f"{need} {selected_district} {state}site:gov.in"
 
     search_url = (
         "https://www.google.com/search?q="
