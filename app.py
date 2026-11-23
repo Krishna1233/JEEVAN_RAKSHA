@@ -4,6 +4,30 @@ import requests
 import urllib.parse
 from supabase import create_client
 
+def calculate_priority(damage_type, description):
+
+    text = (str(damage_type) + " " + str(description)).lower()
+
+    high_keywords = [
+        "trapped", "life danger", "rescue",
+        "people stranded", "house flooded",
+        "पानी में फंसे", "जान का खतरा",
+        "बचाव", "घर में पानी"
+    ]
+
+    medium_keywords = [
+        "crop", "livestock", "house damage",
+        "फसल", "पशुधन", "मकान क्षति"
+    ]
+
+    if any(word in text for word in high_keywords):
+        return "High"
+
+    elif any(word in text for word in medium_keywords):
+        return "Medium"
+
+    return "Low"
+
 st.set_page_config(
     page_title="JEEVANRAKSHA",
     page_icon="🛡️",
