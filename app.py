@@ -273,6 +273,18 @@ elif page == "Report":
         district = st.text_input("District")
         village = st.text_input("Village / Area")
 
+        area_details = st.text_input(
+            "Street / Landmark (Optional)"
+        )
+
+        contact_preference = st.selectbox(
+            "Preferred Contact Method",
+            [
+                "No contact requested",
+                "Contact through available official channels"
+            ]
+        )
+
          
         damage_type = st.selectbox(
     "Select Problem Type",
