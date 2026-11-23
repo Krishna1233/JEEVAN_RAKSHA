@@ -668,6 +668,30 @@ elif page == "Admin Panel":
             if reports:
                 st.write("Total Reports:", len(reports))
 
+                st.subheader("📍 District-wise Priority Dashboard")
+
+                district_data = {}
+
+                for r in reports:
+                    district = r.get("district", "Unknown")
+                    priority = r.get("priority", "Low")
+
+                    if district not in district_data:
+                        district_data[district] = {
+                            "High": 0,
+                            "Medium": 0,
+                            "Low": 0
+                        }
+
+                    district_data[district][priority] += 1
+
+                for district, counts in district_data.items():
+                    st.write(
+                        f"**{district}** | "
+                        f"🔴 High: {counts['High']} | "
+                        f"🟠 Medium: {counts['Medium']} | "
+                        f"🟢 Low: {counts['Low']}"
+                    )
                 high_count = sum(
                     1 for r in reports if r["priority"] == "High"
                 )
