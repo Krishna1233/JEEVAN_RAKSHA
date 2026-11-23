@@ -278,7 +278,7 @@ damage_type = st.selectbox(
     ]
 )
 
-       description = st.text_area("Describe your problem")
+        description = st.text_area("Describe your problem")
 
         submitted = st.form_submit_button("Submit Report")
 
