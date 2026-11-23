@@ -621,9 +621,33 @@ elif page == "Admin Panel":
             ).order("created_at", desc=True).execute()
 
             reports = result.data
+            for report in reports:
+                priority = calculate_priority(
+                    report.get("damage_type", ""),
+                    report.get("description", "")
+                )
 
+                report["priority"] = priority
             if reports:
                 st.write("Total Reports:", len(reports))
+
+                high_count = sum(
+                    1 for r in reports if r["priority"] == "High"
+                )
+
+                medium_count = sum(
+                    1 for r in reports if r["priority"] == "Medium"
+                )
+
+                low_count = sum(
+                    1 for r in reports if r["priority"] == "Low"
+                )
+
+                col1, col2, col3 = st.columns(3)
+
+                col1.metric("🔴 High Priority", high_count)
+                col2.metric("🟠 Medium Priority", medium_count)
+                col3.metric("🟢 Low Priority", low_count)
 
                 ticket_options = [
                     r["ticket_id"] for r in reports
@@ -640,6 +664,17 @@ elif page == "Admin Panel":
                 )
 
                 st.subheader("Report Details")
+                priority = selected_report["priority"]
+
+                if priority == "High":
+                    st.error("🔴 HIGH PRIORITY — Immediate Attention Suggested")
+
+                elif priority == "Medium":
+                    st.warning("🟠 MEDIUM PRIORITY — Review Required")
+
+                else:
+                    st.success("🟢 LOW PRIORITY — Normal Review")
+
 
                 st.write("District:", selected_report["district"])
                 st.write("Village:", selected_report["village"])
