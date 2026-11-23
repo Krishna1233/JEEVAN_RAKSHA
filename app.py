@@ -129,6 +129,7 @@ page_names = {
     "Report": "Report",
     "Track Report": "Track Report",
     "Help & Benefits": "Help & Benefits",
+    "Donation & Support":"Donation & Support",
     "Emergency Help Center": "Emergency Help Center",
     "Dashboard": "Dashboard",
     "Admin Panel": "Admin Panel"
@@ -484,6 +485,146 @@ elif page == "Help & Benefits":
     st.info("Check the official government website "
         "for eligibility, documents and application details."
     )
+
+
+elif page == "Donation & Support":
+
+    st.title("❤️ Donation & Support")
+    st.subheader("Help Every Victim. Support Every Life.")
+
+    st.write(
+        "JEEVANRAKSHA aims to connect kind-hearted people "
+        "with victims and families who need support."
+    )
+
+    st.info(
+        "Every contribution, whether financial or in the form "
+        "of essential supplies, can make a difference."
+    )
+
+    st.subheader("🤝 Who Can We Support?")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("### 🌊 Disaster Victims")
+        st.write("Flood, earthquake and other natural disaster victims.")
+
+        st.markdown("### 🔥 Accident & Fire Victims")
+        st.write("People affected by accidents and fire incidents.")
+
+        st.markdown("### 🏥 Medical Support")
+        st.write("Poor families needing medical assistance.")
+
+        st.markdown("### 🌾 Farmers")
+        st.write("Farmers facing financial loss and hardship.")
+
+    with col2:
+        st.markdown("### 👨‍👩‍👧 Needy Families")
+        st.write("Poor and economically vulnerable families.")
+
+        st.markdown("### 👵 Elderly & Disabled")
+        st.write("Elderly and disabled people needing assistance.")
+
+        st.markdown("### 🏚️ Homeless People")
+        st.write("People needing food, shelter and essential supplies.")
+
+        st.markdown("### 🆘 Other Victims")
+        st.write("People facing unexpected emergencies.")
+
+    st.divider()
+
+    st.subheader("💝 Ways to Contribute")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("### 💰 Financial Donation")
+        st.write("Support verified relief funds and organizations.")
+
+    with col2:
+        st.markdown("### 📦 Essential Supplies")
+        st.write("Contribute food, clothes, medicines and other essentials.")
+
+    st.warning(
+        "Donation collection is not active yet. "
+        "Please contribute only through verified organizations "
+        "and official relief funds."
+    )
+
+    st.success(
+        "Together, we can bring hope, support and dignity "
+        "to people in difficult situations."
+    )
+
+
+    st.divider()
+
+    st.title("🙋 Volunteer Registration")
+
+    st.write(
+        "Join JEEVANRAKSHA and help people in need. "
+        "You can register without providing a mobile number."
+    )
+
+    with st.form("volunteer_registration"):
+
+        volunteer_name = st.text_input("Full Name")
+
+        volunteer_state = st.text_input("State")
+
+        volunteer_district = st.text_input("District")
+
+        volunteer_email = st.text_input(
+            "Email (Optional)"
+        )
+
+        volunteer_skills = st.multiselect(
+            "How would you like to help?",
+            [
+                "Food Distribution",
+                "Medical Assistance",
+                "Rescue Support",
+                "Clothes & Essential Supplies",
+                "Shelter Support",
+                "Fundraising",
+                "Other"
+            ]
+        )
+
+        volunteer_availability = st.selectbox(
+            "Availability",
+            [
+                "Available Anytime",
+                "Weekends",
+                "Part Time",
+                "Only During Emergencies"
+            ]
+        )
+
+        volunteer_submit = st.form_submit_button(
+            "🙋 Register as Volunteer",
+            use_container_width=True
+        )
+
+        if volunteer_submit:
+
+            if (
+                volunteer_name.strip()
+                and volunteer_state.strip()
+                and volunteer_district.strip()
+                and volunteer_skills
+            ):
+                st.success(
+                    "Thank you for your interest! "
+                    "Your volunteer details are ready."
+                )
+
+            else:
+                st.error(
+                    "Please fill Name, State, District "
+                    "and select at least one helping skill."
+                )
 
 elif page == "Emergency Help Center":
     st.title("🚨 Emergency Help Center")
