@@ -285,7 +285,7 @@ elif page == "Track Report":
 
 elif page == "Help & Benefits":
     st.title("🏛️ Government Help Finder")
-        st.subheader("🆘 SOS Quick Access")
+    st.subheader("🆘 SOS Quick Access")
     st.warning("Emergency में तुरंत सहायता के लिए कॉल करें।")
 
     col1, col2, col3 = st.columns(3)
