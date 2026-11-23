@@ -169,8 +169,14 @@ if page == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    st.write("")
+    st.button(
+        "📊 Open Dashboard",
+        use_container_width=True,
+        on_click=go_to_page,
+        args=("Dashboard",)
+    )
 
+    st.write("")
     st.subheader("Our Services")
 
     col1, col2 = st.columns(2)
@@ -183,7 +189,12 @@ if page == "Home":
         </div>
         """, unsafe_allow_html=True)
 
-        st.write("")
+        st.button(
+            "📝 Open Report Page",
+            use_container_width=True,
+            on_click=go_to_page,
+            args=("Report",)
+        )
 
         st.markdown(f"""
         <div class="feature">
@@ -191,6 +202,13 @@ if page == "Home":
             <p>Explore relief schemes for families and farmers.</p>
         </div>
         """, unsafe_allow_html=True)
+
+        st.button(
+            "🏛️ Open Help & Benefits",
+            use_container_width=True,
+            on_click=go_to_page,
+            args=("Help & Benefits",)
+        )
 
     with col2:
         st.markdown(f"""
@@ -200,7 +218,12 @@ if page == "Home":
         </div>
         """, unsafe_allow_html=True)
 
-        st.write("")
+        st.button(
+            "🔐 Track Your Report",
+            use_container_width=True,
+            on_click=go_to_page,
+            args=("Track Report",)
+        )
 
         st.markdown(f"""
         <div class="feature">
@@ -208,6 +231,13 @@ if page == "Home":
             <p>View area-level relief information.</p>
         </div>
         """, unsafe_allow_html=True)
+
+        st.button(
+            "📊 View Dashboard",
+            use_container_width=True,
+            on_click=go_to_page,
+            args=("Dashboard",)
+        )
 
     st.write("")
     st.subheader(safety)
