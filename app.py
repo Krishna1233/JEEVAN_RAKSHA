@@ -729,6 +729,37 @@ elif page == "Emergency Help Center":
         "Verify contact details on official government websites."
     )
 
+
+    st.divider()
+
+    st.subheader("🎒 Emergency Ready Checklist")
+
+    st.write(
+        "Prepare these essential items before an emergency."
+    )
+
+    emergency_items = [
+        "Drinking Water",
+        "Dry Food & Biscuits",
+        "First Aid Kit",
+        "Essential Medicines",
+        "Torch & Extra Batteries",
+        "Mobile Phone & Power Bank",
+        "Important Documents",
+        "Clothes & Blankets",
+        "Cash & Emergency Contacts"
+    ]
+
+    st.write("Check the items you have prepared:")
+
+    for item in emergency_items:
+        st.checkbox(item, key=f"emergency_{item}")
+
+    st.info(
+        "Keep emergency supplies in a safe, waterproof bag "
+        "and follow official safety instructions."
+    )
+
 elif page == "Dashboard":
     st.title("📊 Smart Relief Dashboard")
     st.write("Live overview of flood damage reports.")
