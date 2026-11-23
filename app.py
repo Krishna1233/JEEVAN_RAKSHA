@@ -263,10 +263,20 @@ elif page == "Report":
         district = st.text_input("District")
         village = st.text_input("Village / Area")
 
-        damage_type = st.selectbox(
-            "Type of Damage",
-            ["House", "Crop", "Livestock", "Other"]
-        )
+         
+damage_type = st.selectbox(
+    "Select Problem Type",
+    [
+        "Flood / Waterlogging",
+        "Road Damage / Potholes",
+        "Garbage Management",
+        "Streetlight Failure",
+        "Public Safety Issue",
+        "Water Supply Problem",
+        "Drainage Problem",
+        "Other Civic Issues"
+    ]
+)
 
         description = st.text_area("Describe your problem")
 
