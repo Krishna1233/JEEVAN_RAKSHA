@@ -285,14 +285,14 @@ elif page == "Track Report":
                         elif step == "Resolved" and status == "Resolved":
                             st.success("✅ Resolved")
        
-                else:                                   
+                else:                                     
 
-                    st.error 
-("Invalid Ticket ID or Private Access Code."
+                    st.error( 
+"Invalid Ticket ID or Private Access Code."
                     )
 
-            except Exception:
-                st.error("Unable to track report. Please try again.")
+           except Exception:
+               st.error("Unable to track report. Please try again.")
 
         else:
             st.warning("Please enter both Ticket ID and Access Code.")
