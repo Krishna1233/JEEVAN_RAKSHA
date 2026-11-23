@@ -18,5 +18,12 @@ The following features are planned for future versions of JEEVANRAKSHA 2.0:
 4. **Volunteer Database** – Secure storage and management of volunteer records.
 5. **Relief Support Network** – Connecting verified donors, volunteers and people in need.
 6. **Expanded Emergency Support** – Extending assistance beyond floods to accidents, fires, medical emergencies and other crises.
+7. **Need & Resource Matching System** – Connecting people in need with available resources such as food, water, clothes, medicines and shelter.
 
-*These features are planned for future development and are not yet fully implemented.*
+8. **Resource Registration** – Allowing individuals to register their needs and volunteers or donors to list available resources.
+
+9. **Smart Resource Matching** – Matching available resources with requests based on location and resource type.
+
+*These features are planned for future development and are not yet implemented.*
+
+ 
