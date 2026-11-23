@@ -271,9 +271,24 @@ elif page == "Track Report":
                     st.write("Damage Type:", report["damage_type"])
                     st.write("Current Status:", report["status"])
 
-                else:
-                    st.error(
-                        "Invalid Ticket ID or Private Access Code."
+                    st.subheader("📍 Report Status Timeline")
+
+                    status = report["status"]
+
+                    steps = ["Submitted", "Under Review", "Resolved"]
+
+                    for step in steps:
+                        if step == "Submitted":
+                            st.success("✅ Submitted")
+                        elif step == "Under Review" and status in ["Under Review", "Resolved"]:
+                            st.success("✅ Under Review")
+                        elif step == "Resolved" and status == "Resolved":
+                            st.success("✅ Resolved")
+       
+                else:                                   
+
+                    st.error 
+("Invalid Ticket ID or Private Access Code."
                     )
 
             except Exception:
