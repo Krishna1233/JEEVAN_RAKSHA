@@ -342,7 +342,7 @@ elif page == "Help & Benefits":
     district_list = districts.get(state, [])
 
     selected_district = st.selectbox(
-        "Select Your District",
+        "Select Your District","Help District",
         district_list if district_list else ["District list coming soon"]
     )
     
