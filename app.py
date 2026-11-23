@@ -652,6 +652,19 @@ elif page == "Admin Panel":
                 )
 
                 report["priority"] = priority
+
+            priority_order = {
+                "High": 1,
+                "Medium": 2,
+                "Low": 3
+            }
+
+            reports.sort(
+                key=lambda r: priority_order.get(
+                    r["priority"], 3
+                )
+            )
+
             if reports:
                 st.write("Total Reports:", len(reports))
 
