@@ -692,6 +692,17 @@ elif page == "Admin Panel":
                         f"🟠 Medium: {counts['Medium']} | "
                         f"🟢 Low: {counts['Low']}"
                     )
+
+                st.subheader("📊 District-wise Reports Chart")
+
+                chart_data = {
+                    district: sum(counts.values())
+                    for district, counts in district_data.items()
+                }       
+
+                st.bar_chart(chart
+_data)
+
                 high_count = sum(
                     1 for r in reports if r["priority"] == "High"
                 )
