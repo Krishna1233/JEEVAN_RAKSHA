@@ -444,7 +444,7 @@ elif page == "Emergency Help Center":
     selected_district=(
         st.selectbox(
        "Emergency District",
-         district_list if district_list else ["District list coming soon"]
+         district_list if district_list else ["District list coming soon"],key="emergency_district"
         )
     )
     st.error("🚨 National Emergency Number: 112")
