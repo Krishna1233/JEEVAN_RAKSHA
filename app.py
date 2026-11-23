@@ -334,14 +334,14 @@ elif page == "Help & Benefits":
 
     online_data=get_india
 _districts()
-    if online_data:
-        districts = {
-            item["name"]: [
-                district["name"]
-                for district in    item["districts"]
-            ]
-        for item in online_data
-       }
+     if online_data:
+         districts = {
+             item["name"]: [
+                 district["name"]
+                 for district in    item["districts"]
+             ]
+         for item in online_data
+        }
     district_list =       districts.get(state, [])
 
     selected_district = st.selectbox(
