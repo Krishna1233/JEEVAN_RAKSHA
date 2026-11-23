@@ -264,7 +264,7 @@ elif page == "Report":
         village = st.text_input("Village / Area")
 
          
-damage_type = st.selectbox(
+     damage_type = st.selectbox(
     "Select Problem Type",
     [
         "Flood / Waterlogging",
