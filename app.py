@@ -4,6 +4,13 @@ import requests
 import urllib.parse
 from supabase import create_client
 
+st.set_page_config(
+    page_title="JEEVANRAKSHA",
+    page_icon="🛡️",
+    layout="wide"
+)
+
+
 @st.cache_data(ttl=86400)
 def get_india_districts():
     url = "https://raw.githubusercontent.com/CodingMation/indian-states-districts/main/data/india_states_districts.json"
@@ -21,12 +28,6 @@ def get_india_districts():
     except Exception as e:
         st.error(f"District API Error: {e}")
         return None
-
-st.set_page_config(
-    page_title="JEEVANRAKSHA",
-    page_icon="🛡️",
-    layout="wide"
-)
 
 supabase = create_client(
     st.secrets["SUPABASE_URL"],
@@ -300,47 +301,38 @@ elif page == "Help & Benefits":
     "Uttar Pradesh", "Uttarakhand",
     "West Bengal", "Andaman and Nicobar Islands",
     "Chandigarh", "Delhi", "Jammu and Kashmir",
-    "Ladakh", "Lakshadweep", "Puducherry"
-]
+    "Ladakh", "Lakshadweep", "Puducherry","Dadra and Nagar Haveli and Daman and Diu"
+    ]
+
 
     state = st.selectbox("Select Your State / UT", states)
 
-    districts = {
-    "Gujarat": [
-        "Ahmedabad", "Surat", "Vadodara",
-        "Rajkot", "Anand"
-    ],
+    online_data = get_india_districts()
 
-    "Bihar": [
-        "Patna", "Gaya", "Muzaffarpur",
-        "Bhagalpur", "Darbhanga"
-    ],
+    if online_data:
+        districts = {
+            item["name"]: [
+                district["name"]
+                for district in item["districts"]
+            ]
+            for item in online_data
+        }
+    else:
+        districts = {
+            "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Anand"],
+            "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur", "Darbhanga"],
+            "Uttar Pradesh": ["Prayagraj", "Lucknow", "Varanasi", "Kanpur", "Gorakhpur"],
+            "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane"],
+            "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer"]
+        }
 
-    "Uttar Pradesh": [
-        "Prayagraj", "Lucknow", "Varanasi",
-        "Kanpur", "Gorakhpur"
-    ],
+    district_list = districts.get(state, [])
 
-    "Maharashtra": [
-        "Mumbai", "Pune", "Nagpur",
-        "Nashik", "Thane"
-    ],
+    selected_district = st.selectbox(
+        "Select Your District",
+        district_list if district_list else ["District list coming soon"]
+    )
 
-    "Rajasthan": [
-        "Jaipur", "Jodhpur", "Udaipur",
-        "Kota", "Ajmer"
-    ]
-    }
-
-online_data=get_india_districts()
-if online_data:
-    districts = {
-        item["name"]: [
-            district["name"]
-            for district in    item["districts"]
-        ]
-         for item in online_data
-    }
 district_list=     districts.get(state, [])
 
 selected_district = st.selectbox(
