@@ -238,6 +238,17 @@ elif page == "Track Report":
     st.title("🔐 " + track)
     st.write("Enter your Ticket ID and Private Access Code.")
 
+    status = report["status"]
+
+    st.subheader("📍 Report Status Timeline")
+
+    steps = ["Submitted", "Under Review", "Resolved"]
+
+    for step in steps:
+        if steps.index(step) <= steps.index(status):
+            st.success("✅ " + step)
+        else:
+            st.info("⏳ " + step)
     ticket = st.text_input("Ticket ID")
     access = st.text_input(
         "Private Access Code",
