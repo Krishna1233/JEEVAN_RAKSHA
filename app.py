@@ -285,6 +285,19 @@ elif page == "Track Report":
 
 elif page == "Help & Benefits":
     st.title("🏛️ Government Help Finder")
+        st.subheader("🆘 SOS Quick Access")
+    st.warning("Emergency में तुरंत सहायता के लिए कॉल करें।")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.link_button("🚨 Call 112", "tel:112")
+
+    with col2:
+        st.link_button("🚑 Call 102", "tel:102")
+
+    with col3:
+        st.link_button("🔥 Call 101", "tel:101")
     st.subheader("Find Government Relief Schemes Across India")
 
      
