@@ -409,7 +409,8 @@ elif page == "Emergency Help Center":
 get_iselected_state = st.selectbox(
         "Select Your State / UT", states
     )
-  online_data=get_india_districts()
+     online_data=
+get_india_districts()
 
     if online_data:
         districts = {
