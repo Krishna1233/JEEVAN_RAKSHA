@@ -323,6 +323,8 @@ elif page == "Report":
 
         submitted = st.form_submit_button("Submit Report")
 
+
+    if submitted:
         if (
             district.strip()
             and village.strip()
@@ -335,13 +337,6 @@ elif page == "Report":
                 )
             )
         ):
-
-        else:
-            st.warning(
-                "Please enter District, Area and Description. "
-                "PIN Code must contain exactly 6 digits."
-            )
-
             import uuid
             import hashlib
             import secrets
@@ -364,19 +359,24 @@ elif page == "Report":
                     "status": "Submitted"
                 }).execute()
 
-                st.success("Report saved successfully!")
+                st.success("Report submitted successfully!")
                 st.write("Ticket ID:", ticket_id)
                 st.write("Private Access Code:", access_code)
-                st.warning("Save both details safely. Access Code will be shown only once.")
+                st.warning(
+                    "Save both details safely. "
+                    "Access Code will be shown only once."
+                )
 
-            except Exception as e:
+            except Exception:
                 st.error("Report could not be saved.")
-                st.code(str(e))
 
         else:
-            st.warning("Please fill in all required fields.")
-             
+            st.warning(
+                "Please fill in all required fields. "
+                "PIN Code must contain exactly 6 digits."
+            )
 
+        
 elif page == "Track Report":
     st.title("🔐 " + track)
     st.write("Enter your Ticket ID and Private Access Code.")
