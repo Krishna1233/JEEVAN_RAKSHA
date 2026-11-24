@@ -10,7 +10,7 @@ Smart Flood Relief &amp; Victim Support System
 
 ## 🚀 Future Enhancements
 
-The following features are planned for future versions of JEEVANRAKSHA 2.0:
+The following features are planned for future versions of JEEVANRAKSHA :
 
 1. **Donation Integration** – Secure online donation and payment facilities to support victims of different emergencies.
 2. **Volunteer Management System** – Volunteer registration, verification and management.
