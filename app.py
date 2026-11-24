@@ -323,9 +323,18 @@ elif page == "Report":
 
         submitted = st.form_submit_button("Submit Report")
 
-     
-    if submitted:
-        if district.strip() and village.strip() and description.strip():
+        if (
+            district.strip()
+            and village.strip()
+            and description.strip()
+            and (
+                not pin_code.strip()
+                or (
+                    pin_code.isdigit()
+                    and len(pin_code) == 6
+                )
+            )
+        ):
             import uuid
             import hashlib
             import secrets
