@@ -149,4 +149,4 @@ To build a future where every citizen can raise a civic concern, follow its prog
 
 The following screenshots showcase the key features and user interface of JEEVANRAKSHA.
 
-![Project Screenshot](Screenshot.png)
+![Project Screenshot](Screenshots)
