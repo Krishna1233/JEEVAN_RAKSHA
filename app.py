@@ -272,6 +272,10 @@ elif page == "Report":
     with st.form("flood_report_form"):
         district = st.text_input("District")
         village = st.text_input("Village / Area")
+        pin_code = st.text_input(
+            "PIN Code (Optional)",
+            max_chars=6
+        )
 
         area_details = st.text_input(
             "Street / Landmark (Optional)"
