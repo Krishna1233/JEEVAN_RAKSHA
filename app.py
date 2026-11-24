@@ -209,7 +209,7 @@ else:
 
 st.sidebar.image(
     "47ecea72-96eb-4ff2-826d-29c06658c95d.png",
-    width=110
+    width=220
 )
 
 st.sidebar.title("🛡️ JEEVANRAKSHA")
