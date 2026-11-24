@@ -308,6 +308,15 @@ elif page == "Report":
             type=["jpg", "jpeg", "png"]
         )
 
+
+        if uploaded_photo is not None:
+            st.image(
+                uploaded_photo,
+                caption="Problem Photo Preview",
+                use_container_width=True
+            )
+
+
         submitted = st.form_submit_button("Submit Report")
 
      
