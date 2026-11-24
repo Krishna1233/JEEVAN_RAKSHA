@@ -246,7 +246,10 @@ page = {
 
 # Home Page
 if page == "Home":
-
+    st.image(
+        "jeevanraksha_logo.png",
+        width=300
+    )
     st.markdown("""
     <div class="hero">
         <h1>🛡️ JEEVANRAKSHA </h1>
