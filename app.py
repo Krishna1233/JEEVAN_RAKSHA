@@ -245,7 +245,7 @@ page = {
  
 #Home page
 
-if page="Home":
+if page=="Home":
     st.markdown("""
     <style>
     div[data-testid="stImage"] {
