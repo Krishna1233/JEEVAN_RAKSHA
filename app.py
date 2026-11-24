@@ -39,7 +39,7 @@ def calculate_priority(damage_type, description):
     return "Low"
 
 st.set_page_config(
-    page_title="JEEVANRAKSHA",
+    page_title=" JEEVANRAKSHA",
     page_icon="🛡️",
     layout="wide"
 )
