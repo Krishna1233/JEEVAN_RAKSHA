@@ -247,7 +247,7 @@ page = {
 # Home Page
 if page == "Home":
     st.image(
-        "jeevanraksha_logo.png",
+        "jeevanraksha_ Building Safer Cities.png",
         width=300
     )
     st.markdown("""
