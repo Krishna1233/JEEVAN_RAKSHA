@@ -143,3 +143,10 @@ The application has been tested for its major workflows, including:
 To build a future where every citizen can raise a civic concern, follow its progress, and participate in creating safer, smarter, and more responsive communities.
 
 **Repository:** GitHub – JEEVAN_RAKSHA
+
+
+## Project Screenshots uploaded in folder screenshots
+
+The following screenshots showcase the key features and user interface of JEEVANRAKSHA.
+
+![Project Screenshot](Screenshot/your-image-name.png)
