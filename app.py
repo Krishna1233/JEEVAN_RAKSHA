@@ -97,7 +97,7 @@ st.markdown("""
 
 .hero h1 {
     color: #FFFFFF;
-    font-size: 38px;
+    font-size: 44px;
     font-weight: 800;
     text-align: center;
     width: 100%;
