@@ -208,7 +208,7 @@ else:
 # Sidebar Navigation
 
 st.sidebar.image(
-    "jeevanraksha_icon.png",
+    "47ecea72-96eb-4ff2-826d-29",
     width=110
 )
 
