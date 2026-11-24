@@ -214,20 +214,6 @@ st.sidebar.image(
 
 st.sidebar.title("🛡️ JEEVANRAKSHA")
 
-page = st.sidebar.radio(
-    "Navigation",
-    [
-        "Home",
-        "Report",
-        "Track Report",
-        "Help & Benefits",
-        "Emergency Help Center",
-        "Dashboard",
-        "Admin Panel"
-    ]
-)
-st.sidebar.title("🛡️ JEEVANRAKSHA")
-
 page_names = {
     "Home": "Home",
     "Report": "Report",
