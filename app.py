@@ -246,24 +246,13 @@ page = {
 #Home page
 
 if page=="Home":
-    st.markdown("""
-    <style>
-    div[data-testid="stImage"] {
-        display: flex;
-        justify-content: center;
-    }
+logo_col1, logo_col2, logo_col3 = st.columns([1, 2, 1])
 
-    div[data-testid="stImage"] img {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
+with logo_col2:
     st.image(
         "Jeevanraksha_ Building Safer Cities.png",
         width=230
-    )
+    )     
 
     st.markdown("""
     <div class="hero">
