@@ -156,6 +156,5 @@ The following screenshots showcase the key features and user interface of JEEVAN
 Screenshots showcasing the user interface and key features of **JEEVANRAKSHA**.
 
 ### 🏠 Home Page
-
-![JEEVANRAKSHA Home Page](./screenshots/home.png)
-
+ 
+![JEEVANRAKSHA Home Page](https://raw.githubusercontent.com/Krishna1233/JEEVAN_RAKSHA/main/screenshots/home.png)
