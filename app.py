@@ -71,37 +71,111 @@ supabase = create_client(
 # Custom Design
 st.markdown("""
 <style>
+
+/* JEEVANRAKSHA Official Brand Theme */
+
 .stApp {
-    background-color: #f4f8fb;
+    background-color: #F4F8FC;
+    color: #102B50;
 }
+
+/* Hero Section */
 .hero {
-    background: linear-gradient(120deg, #102c46, #087e83);
-    padding: 35px 22px;
+    background: linear-gradient(
+        135deg,
+        #102B50,
+        #075B78,
+        #12B8C5
+    );
+    padding: 35px 25px;
     border-radius: 18px;
     color: white;
     text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(16,43,80,0.18);
 }
+
 .hero h1 {
-    color: white;
+    color: #FFFFFF;
     font-size: 38px;
+    font-weight: 800;
 }
+
+.hero h2 {
+    color: #F5D77A;
+    font-size: 25px;
+}
+
 .hero p {
-    color: #e1f5f3;
-    font-size: 17px;
+    color: #EAF7FA;
+    font-size: 16px;
+    line-height: 1.6;
 }
+
+/* Feature Cards */
 .feature {
-    background: white;
+    background: #FFFFFF;
     padding: 20px;
     border-radius: 14px;
-    border: 1px solid #dce7ed;
-    min-height: 150px;
+    border-left: 5px solid #12B8C5;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 12px rgba(16,43,80,0.08);
 }
+
 .feature h3 {
-    color: #123b50;
+    color: #102B50;
 }
+
 .feature p {
-    color: #526575;
+    color: #526477;
+    line-height: 1.5;
 }
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(
+        90deg,
+        #102B50,
+        #087F91
+    );
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.stButton > button:hover {
+    background: #D9A928;
+    color: #102B50;
+    border: none;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #102B50;
+}
+
+/* Dividers */
+hr {
+    border-color: #D9E5EF;
+}
+
+/* Expanders */
+div[data-testid="stExpander"] {
+    border: 1px solid #D9E5EF;
+    border-radius: 12px;
+}
+
+/* Metrics */
+div[data-testid="stMetric"] {
+    background: #FFFFFF;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #D9E5EF;
+    box-shadow: 0 2px 8px rgba(16,43,80,0.06);
+}
+
 </style>
 """, unsafe_allow_html=True)
 
