@@ -897,188 +897,166 @@ elif page == "Resource Matching":
         else:
             st.warning("Please enter your district.")
 
+
 elif page == "Dashboard":
-    st.title("📊 Smart Relief Dashboard")
-    st.write("Live overview of flood damage reports.")
-    st.subheader("🚀 Quick Access")
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.button(
-            "📝 Report Damage",
-            use_container_width=True,
-            on_click=go_to_page,
-            args=("Report",)
-        )
-
-        st.button(
-            "🔍 Track Report",
-            use_container_width=True,
-            on_click=go_to_page,
-            args=("Track Report",)
-        )
-
-    with col2:
-        st.button(
-            "🆘 Emergency Help",
-            use_container_width=True,
-            on_click=go_to_page,
-            args=("Emergency Help Center",)
-        )
-
-        st.button(
-            "🤝 Help & Benefits",
-            use_container_width=True,
-            on_click=go_to_page,
-            args=("Help & Benefits",)
-        )  
-
+    st.title("🏙️ City Intelligence Dashboard")
+    st.write(
+        "Smart monitoring and analysis of reported city issues."
+    )
 
     st.divider()
-    st.subheader("📊 Relief Transparency Board")
 
+    # Fetch Reports
     try:
-        transparency_result = (
+        result = (
             supabase.table("reports")
-            .select("status")
+            .select(
+                "ticket_id, district, village, damage_type, status, created_at"
+            )
             .execute()
         )
 
-        transparency_reports = transparency_result.data or []
-
-        total_reports = len(transparency_reports)
-
-        pending_reports = sum(
-            1 for r in transparency_reports
-            if r.get("status") == "Submitted"
-        )
-
-        review_reports = sum(
-            1 for r in transparency_reports
-            if r.get("status") == "Under Review"
-        )
-
-        resolved_reports = sum(
-            1 for r in transparency_reports
-            if r.get("status") == "Resolved"
-        )
-
-        resolution_rate = (
-            resolved_reports / total_reports * 100
-            if total_reports > 0 else 0
-        )
-
-        c1, c2, c3, c4 = st.columns(4)
-
-        c1.metric("Total Reports", total_reports)
-        c2.metric("Pending", pending_reports)
-        c3.metric("Under Review", review_reports)
-        c4.metric("Resolved", resolved_reports)
-
-        st.progress(resolution_rate / 100)
-
-        st.caption(
-            f"Resolution Rate: {resolution_rate:.1f}%"
-        )
-
-    except Exception:
-        st.warning("Transparency data is currently unavailable.")
-
-
-    st.divider()
-    st.subheader("🏙️ City Issue Statistics")
-
-    try:
-        city_result = (
-            supabase.table("reports")
-            .select("damage_type")
-            .execute()
-        )
-
-        city_reports = city_result.data or []
-        issue_counts = {}
-
-        for report in city_reports:
-            issue = report.get("damage_type", "Unknown")
-            issue_counts[issue] = issue_counts.get(issue, 0) + 1
-
-        if issue_counts:
-            st.bar_chart(issue_counts)
-        else:
-            st.info("No city issue reports available yet.")
-
-    except Exception:
-        st.warning("City issue statistics are unavailable.")
- 
-    try:
-        result = supabase.table("reports").select(
-            "district, damage_type, status"
-        ).execute()
-
-        reports = result.data
+        reports = result.data or []
 
         total = len(reports)
 
-        submitted_count = sum(
-            1 for r in reports if r["status"] == "Submitted"
+        high = sum(
+            1 for r in reports
+            if r.get("priority") == "High"
         )
 
-        under_review = sum(
-            1 for r in reports if r["status"] == "Under Review"
+        pending = sum(
+            1 for r in reports
+            if r.get("status") == "Submitted"
         )
 
-        verified = sum(
-            1 for r in reports if r["status"] == "Verified"
+        review = sum(
+            1 for r in reports
+            if r.get("status") == "Under Review"
         )
 
         resolved = sum(
-            1 for r in reports if r["status"] == "Resolved"
+            1 for r in reports
+            if r.get("status") == "Resolved"
         )
 
-        col1, col2, col3 = st.columns(3)
+        # KPI Cards
+        st.subheader("📊 City Performance Overview")
 
-        col1.metric("Total Reports", total)
-        col2.metric("Submitted", submitted_count)
-        col3.metric("Under Review", under_review)
+        c1, c2 = st.columns(2)
 
-        col4, col5 = st.columns(2)
+        c1.metric("Total Reports", total)
+        c2.metric("High Priority", high)
 
-        col4.metric("Verified", verified)
-        col5.metric("Resolved", resolved)
+        c3, c4 = st.columns(2)
 
+        c3.metric("Pending Reports", pending)
+        c4.metric("Resolved Reports", resolved)
 
         st.divider()
 
-        st.subheader("Damage Type Overview")
+        # Resolution Rate
+        st.subheader("✅ Resolution Performance")
 
-        damage_counts = {}
+        resolution_rate = (
+            resolved / total * 100 if total else 0
+        )
+
+        st.progress(resolution_rate / 100)
+
+        st.write(
+            f"Resolution Rate: {resolution_rate:.1f}%"
+        )
+
+        st.caption(
+            "Based on the current report status records."
+        )
+
+        st.divider()
+
+        # Issue Statistics
+        st.subheader("🏙️ City Issue Statistics")
+
+        issue_counts = {}
 
         for r in reports:
-            damage = r["damage_type"]
-            damage_counts[damage] = damage_counts.get(damage, 0) + 1
+            issue = r.get("damage_type") or "Unknown"
+            issue_counts[issue] = (
+                issue_counts.get(issue, 0) + 1
+            )
 
-        if damage_counts:
-            st.bar_chart(damage_counts)
+        if issue_counts:
+            st.bar_chart(issue_counts)
         else:
             st.info("No reports available yet.")
 
         st.divider()
 
-        st.subheader("District-wise Reports")
+        # District Analysis
+        st.subheader("📍 District-wise Analysis")
 
         district_counts = {}
 
         for r in reports:
-            district = r["district"]
-            district_counts[district] = district_counts.get(district, 0) + 1
+            district = r.get("district") or "Unknown"
+            district_counts[district] = (
+                district_counts.get(district, 0) + 1
+            )
 
         if district_counts:
             st.bar_chart(district_counts)
 
-    except Exception:
-        st.error("Dashboard data could not be loaded.")
+        st.divider()
 
+        # Priority Overview
+        st.subheader("🚨 Priority Overview")
+
+        priority_counts = {
+            "High": 0,
+            "Medium": 0,
+            "Low": 0
+        }
+
+        for r in reports:
+            priority = r.get("priority")
+
+            if priority in priority_counts:
+                priority_counts[priority] += 1
+
+        st.bar_chart(priority_counts)
+
+        st.caption(
+            "Priority figures include only records with a saved priority value."
+        )
+
+        st.divider()
+
+        # Recent Reports
+        st.subheader("🕒 Recent City Reports")
+
+        recent_reports = reports[-5:][::-1]
+
+        if recent_reports:
+            for r in recent_reports:
+                with st.expander(
+                    f"📌 {r.get('damage_type', 'City Issue')} "
+                    f"- {r.get('district', 'Unknown')}"
+                ):
+                    st.write(
+                        "Area:", r.get("village", "Unknown")
+                    )
+                    st.write(
+                        "Status:", r.get("status", "Unknown")
+                    )
+        else:
+            st.info("No recent reports available.")
+
+    except Exception:
+        st.error(
+            "Dashboard data could not be loaded. Please try again."
+        )
+              
 elif page == "Admin Panel":
     st.title("🔐 Admin Report Management")
 
