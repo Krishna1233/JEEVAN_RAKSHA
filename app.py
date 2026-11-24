@@ -335,6 +335,13 @@ elif page == "Report":
                 )
             )
         ):
+
+        else:
+            st.warning(
+                "Please enter District, Area and Description. "
+                "PIN Code must contain exactly 6 digits."
+            )
+
             import uuid
             import hashlib
             import secrets
