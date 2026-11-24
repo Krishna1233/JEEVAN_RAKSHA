@@ -80,7 +80,6 @@ The platform allows citizens to submit civic issue reports, receive unique track
 
 *JEEVANRAKSHA is an independent civic-tech prototype built to explore a more accessible and transparent approach to civic issue reporting.*
 
-
 ## 🚀 Future Enhancements
 
 The following features are planned for future versions of JEEVANRAKSHA :
@@ -106,4 +105,41 @@ The following features are planned for future versions of JEEVANRAKSHA :
 
 *These features are planned for future development and are not yet implemented.*
 
- 
+## 📈 Project Impact
+
+JEEVANRAKSHA aims to:
+
+- Encourage citizen participation in civic improvement.
+- Make civic issue reporting more organized.
+- Improve visibility into reported urban problems.
+- Support transparency through report tracking.
+- Help identify issues that may need attention through priority suggestions.
+
+## 👥 Target Users
+
+- Urban and rural citizens
+- Local communities
+- Civic volunteers
+- Community organizations
+- Public service stakeholders
+
+## 🛠️ Project Development Approach
+
+The project was developed using Python and Streamlit, with Supabase as its database backend. The interface is designed to be accessible through mobile and desktop browsers.
+
+## 🧪 Testing
+
+The application has been tested for its major workflows, including:
+
+- Civic issue submission
+- Ticket ID generation
+- Private access code verification
+- Report tracking
+- Dashboard data display
+- Admin report management
+
+## 🌟 Our Vision
+
+To build a future where every citizen can raise a civic concern, follow its progress, and participate in creating safer, smarter, and more responsive communities.
+
+**Repository:** GitHub – JEEVAN_RAKSHA
