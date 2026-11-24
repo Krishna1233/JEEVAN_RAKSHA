@@ -148,5 +148,14 @@ To build a future where every citizen can raise a civic concern, follow its prog
 ## Project Screenshots uploaded in folder screenshots
 
 The following screenshots showcase the key features and user interface of JEEVANRAKSHA.
+ 
+---
 
-![Project Screenshot](Screenshots)
+## 📸 Project Screenshots
+
+Screenshots showcasing the user interface and key features of **JEEVANRAKSHA**.
+
+### 🏠 Home Page
+
+![JEEVANRAKSHA Home Page](screenshots/home.png)
+
