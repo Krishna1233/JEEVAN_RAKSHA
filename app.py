@@ -251,7 +251,7 @@ if page=="Home":
     with logo_col2:
         st.image(
         "Jeevanraksha_ Building Safer Cities.png",
-        width=120
+        width=450
         )     
 
     st.markdown("""
