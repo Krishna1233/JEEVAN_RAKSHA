@@ -208,7 +208,7 @@ else:
 # Sidebar Navigation
 
 st.sidebar.image(
-    "47ecea72-96eb-4ff2-826d-29",
+    "47ecea72-96eb-4ff2-826d-29c06658c95d.png",
     width=110
 )
 
