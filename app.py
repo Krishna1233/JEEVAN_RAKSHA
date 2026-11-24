@@ -243,8 +243,9 @@ page = {
     for original, display in page_names.items()
 }[page]
  
+#Home page
 
-
+if page="Home":
     st.markdown("""
     <style>
     div[data-testid="stImage"] {
