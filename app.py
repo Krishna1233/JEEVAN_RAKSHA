@@ -262,7 +262,7 @@ if page=="Home":
 
     st.markdown("""
     <div class="hero">
-        <h1>🛡️ JEEVANRAKSHA </h1>
+        <h1>🛡️  JEEVANRAKSHA </h1>
         <h2>Building Safer & Smarter Cities</h2>
         <p>Report Problems. Connect Solutions. Improve Your City.</p>
         <p>
