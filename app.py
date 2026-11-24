@@ -99,6 +99,10 @@ st.markdown("""
     color: #FFFFFF;
     font-size: 38px;
     font-weight: 800;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
 }
 
 .hero h2 {
