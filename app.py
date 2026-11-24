@@ -246,10 +246,15 @@ page = {
 
 # Home Page
 if page == "Home":
-    st.image(
-        "Jeevanraksha_ Building Safer Cities.png",
-        width=230
-    )
+
+    logo_col1, logo_col2, logo_col3 = st.columns([1, 2, 1])
+
+    with logo_col2:
+        st.image(
+            "Jeevanraksha_ Building Safer Cities.png",
+            width=230
+        )
+
     st.markdown("""
     <div class="hero">
         <h1>🛡️ JEEVANRAKSHA </h1>
