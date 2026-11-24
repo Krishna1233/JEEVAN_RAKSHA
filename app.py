@@ -1046,8 +1046,8 @@ elif page == "Dashboard":
         result = (
             supabase.table("reports")
             .select(
-                "ticket_id, district, village, damage_type, status, created_at"
-            )
+    "ticket_id, district, village, damage_type, status, priority, created_at"
+) 
             .execute()
         )
 
