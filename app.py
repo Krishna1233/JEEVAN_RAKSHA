@@ -499,7 +499,7 @@ supabase.table("reports").insert({      "ticket_id":ticket_id,
                     "description": description.strip(),
                     "status": "Submitted"
 
-                     "priority": priority"
+                     "priority": "priority"
                 }).execute()
 
                 st.success("Report submitted successfully!")
