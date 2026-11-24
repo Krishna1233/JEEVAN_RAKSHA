@@ -169,100 +169,139 @@ page = {
     for original, display in page_names.items()
 }[page]
  
+
 # Home Page
 if page == "Home":
 
-    st.markdown(f"""
+    st.markdown("""
     <div class="hero">
-        <h1>🛡️ JEEVANRAKSHA</h1>
-        <h2>{title}</h2>
-        <p>{subtitle}</p>
-        <p>{intro}</p>
+        <h1>🛡️ JEEVANRAKSHA </h1>
+        <h2>Building Safer & Smarter Cities</h2>
+        <p>Report Problems. Connect Solutions. Improve Your City.</p>
+        <p>
+            A citizen-focused platform designed to report,
+            monitor and analyze urban civic issues.
+        </p>
+        <h3>🏙️ CITYFIX BUILDATHON PROJECT</h3>
     </div>
     """, unsafe_allow_html=True)
 
-    st.button(
-        "📊 Open Dashboard",
-        use_container_width=True,
-        on_click=go_to_page,
-        args=("Dashboard",)
-    )
-
     st.write("")
-    st.subheader("Our Services")
+
+    st.subheader("🚀 Get Started")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown(f"""
-        <div class="feature">
-            <h3>📝 {report}</h3>
-            <p>Submit flood damage and assistance requests.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
         st.button(
-            "📝 Open Report Page",
+            "📝 Report City Issue",
             use_container_width=True,
             on_click=go_to_page,
             args=("Report",)
         )
 
-        st.markdown(f"""
-        <div class="feature">
-            <h3>🏛️ {benefits}</h3>
-            <p>Explore relief schemes for families and farmers.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.button(
-            "🏛️ Open Help & Benefits",
-            use_container_width=True,
-            on_click=go_to_page,
-            args=("Help & Benefits",)
-        )
-
     with col2:
-        st.markdown(f"""
-        <div class="feature">
-            <h3>🔐 {track}</h3>
-            <p>Access and update your report securely.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
         st.button(
-            "🔐 Track Your Report",
-            use_container_width=True,
-            on_click=go_to_page,
-            args=("Track Report",)
-        )
-
-        st.markdown(f"""
-        <div class="feature">
-            <h3>📊 {dashboard}</h3>
-            <p>View area-level relief information.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.button(
-            "📊 View Dashboard",
+            "📊 Open Dashboard",
             use_container_width=True,
             on_click=go_to_page,
             args=("Dashboard",)
         )
 
-    st.write("")
-    st.subheader(safety)
+    st.divider()
 
-    st.info(
-        "During a flood, move to safer higher ground. "
-        "Avoid walking or driving through floodwater. "
-        "Follow official government emergency instructions."
+    st.subheader("🌍 Our Mission")
+
+    st.write(
+        "Our mission is to make civic issue reporting "
+        "more accessible, transparent and organized. "
+        "We aim to help citizens report local problems "
+        "and monitor their progress through one platform."
     )
 
-    st.success(
-        "JEEVANRAKSHA is a demonstration project, "
-        "not an official government portal."
+    st.divider()
+
+    st.subheader("⚙️ Our Key Features")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+        <div class="feature">
+            <h3>📝 Smart Issue Reporting</h3>
+            <p>Report potholes, garbage, waterlogging,
+            drainage and other civic problems.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🔐 Secure Report Tracking</h3>
+            <p>Track submitted reports using a
+            private access code.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📷 Photo Evidence</h3>
+            <p>Add a photo to help describe
+            the reported problem.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class="feature">
+            <h3>🚨 Priority Assessment</h3>
+            <p>Keyword-based priority suggestions
+            help identify reports needing attention.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📊 City Intelligence</h3>
+            <p>View issue statistics and
+            district-wise report analysis.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🔎 Transparency</h3>
+            <p>Monitor report statuses
+            through the dashboard.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.divider()
+
+    st.subheader("🔄 How It Works")
+
+    st.markdown("""
+    1. **Report:** Submit a civic issue with its details.
+    2. **Receive:** Get a unique Ticket ID and private access code.
+    3. **Track:** Check the status of your report.
+    4. **Analyze:** View aggregated city issue statistics.
+    """)
+
+    st.divider()
+
+    st.subheader("🔒 Privacy & Responsibility")
+
+    st.write(
+        "We aim to protect report access through private "
+        "access codes and secure data handling. "
+        "Only aggregated information should be displayed "
+        "on public dashboards. Uploaded photos are currently "
+        "previewed in the reporting session and are not "
+        "permanently stored."
+    )
+
+    st.info(
+        "JEEVANRAKSHA is an independent civic-tech "
+        "prototype. It is not an official government platform. "
+        "Reports do not automatically reach government authorities."
+    )
+
+    st.divider()
+
+    st.caption(
+        "JEEVANRAKSHA | CityFix Buildathon | "
+        "Protect Lives. Connect Help. Track Every Need."
     )
 
 elif page == "Report":
