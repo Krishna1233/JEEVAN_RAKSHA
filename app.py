@@ -248,7 +248,7 @@ page = {
 if page == "Home":
     st.image(
         "Jeevanraksha_ Building Safer Cities.png",
-        width=300
+        width=230
     )
     st.markdown("""
     <div class="hero">
