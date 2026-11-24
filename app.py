@@ -244,16 +244,25 @@ page = {
 }[page]
  
 
-# Home Page
-if page == "Home":
 
-    logo_col1, logo_col2, logo_col3 = st.columns([1, 2, 1])
+    st.markdown("""
+    <style>
+    div[data-testid="stImage"] {
+        display: flex;
+        justify-content: center;
+    }
 
-    with logo_col2:
-        st.image(
-            "Jeevanraksha_ Building Safer Cities.png",
-            width=230
-        )
+    div[data-testid="stImage"] img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.image(
+        "Jeevanraksha_ Building Safer Cities.png",
+        width=230
+    )
 
     st.markdown("""
     <div class="hero">
