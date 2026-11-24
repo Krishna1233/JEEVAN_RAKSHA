@@ -497,8 +497,8 @@ elif page == "Report":
                     "ticket_id":ti
 cket_id,                           
 
-                    "access_code_
-hash":access_hash,
+                    "access_code
+_hash":access_hash,
                     "district": district.strip(),
                     "village": village.strip(),
                     "damage_type": damage_type,
