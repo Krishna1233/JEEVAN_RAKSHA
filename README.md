@@ -157,5 +157,5 @@ Screenshots showcasing the user interface and key features of **JEEVANRAKSHA**.
 
 ### 🏠 Home Page
 
-![JEEVANRAKSHA Home Page](screenshots/home.png)
+![JEEVANRAKSHA Home Page](./screenshots/home.png)
 
