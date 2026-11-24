@@ -101,7 +101,7 @@ st.markdown("""
     font-weight: 800;
     text-align: center;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 8px auto;
     display: block;
 }
 
