@@ -489,14 +489,18 @@ elif page == "Report":
             ).hexdigest()
 
             try:
-                supabase.table("reports").insert({
-                    "ticket_id": ticket_id,
+                priority = calculate_priority(damage_type, description)               
+          
+                supabase.table("
+reports").insert({"ticket_id":ticket_id,
                     "access_code_hash": access_hash,
                     "district": district.strip(),
                     "village": village.strip(),
                     "damage_type": damage_type,
                     "description": description.strip(),
                     "status": "Submitted"
+
+                     "priority": priority"
                 }).execute()
 
                 st.success("Report submitted successfully!")
