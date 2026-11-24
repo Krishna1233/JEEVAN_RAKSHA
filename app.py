@@ -301,6 +301,13 @@ elif page == "Report":
     )
 
         description = st.text_area("Describe your problem")
+
+
+        uploaded_photo = st.file_uploader(
+            "📷 Upload Problem Photo (Optional)",
+            type=["jpg", "jpeg", "png"]
+        )
+
         submitted = st.form_submit_button("Submit Report")
 
      
