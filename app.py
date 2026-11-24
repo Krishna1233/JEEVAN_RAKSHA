@@ -246,27 +246,26 @@ page = {
 #Home page
 
 if page=="Home":
-logo_col1, logo_col2, logo_col3 = st.columns([1, 2, 1])
+   logo_col1, logo_col2, logo_col3 = st.columns([1, 2, 1])
 
-with logo_col2:
-    st.image(
+   with logo_col2:
+       st.image(
         "Jeevanraksha_ Building Safer Cities.png",
         width=230
-    )     
+       )     
 
-    st.markdown("""
-    <div class="hero">
-        <h1>🛡️ JEEVANRAKSHA </h1>
-        <h2>Building Safer & Smarter Cities</h2>
-        <p>Report Problems. Connect Solutions. Improve Your City.</p>
-        <p>
+   st.markdown("""
+   <div class="hero">
+       <h1>🛡️ JEEVANRAKSHA </h1>
+       <h2>Building Safer & Smarter Cities</h2>
+       <p>Report Problems. Connect Solutions. Improve Your City.</p>
+       <p>
             A citizen-focused platform designed to report,
             monitor and analyze urban civic issues.
-        </p>
-        <h3>🏙️ CITYFIX BUILDATHON PROJECT</h3>
-    </div>
+       </p>
+       <h3>🏙️ CITYFIX BUILDATHON PROJECT</h3>
+       </div>
     """, unsafe_allow_html=True)
-
     st.write("")
 
     st.subheader("🚀 Get Started")
