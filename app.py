@@ -984,7 +984,33 @@ elif page == "Dashboard":
 
     except Exception:
         st.warning("Transparency data is currently unavailable.")
-  
+
+
+    st.divider()
+    st.subheader("🏙️ City Issue Statistics")
+
+    try:
+        city_result = (
+            supabase.table("reports")
+            .select("damage_type")
+            .execute()
+        )
+
+        city_reports = city_result.data or []
+        issue_counts = {}
+
+        for report in city_reports:
+            issue = report.get("damage_type", "Unknown")
+            issue_counts[issue] = issue_counts.get(issue, 0) + 1
+
+        if issue_counts:
+            st.bar_chart(issue_counts)
+        else:
+            st.info("No city issue reports available yet.")
+
+    except Exception:
+        st.warning("City issue statistics are unavailable.")
+ 
     try:
         result = supabase.table("reports").select(
             "district, damage_type, status"
