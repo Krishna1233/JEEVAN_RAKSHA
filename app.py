@@ -490,9 +490,8 @@ elif page == "Report":
 
             try:
                 priority = calculate_priority(damage_type, description)               
-          
-                supabase.table("
-reports").insert({"ticket_id":ticket_id,
+         
+supabase.table("reports").insert({      "ticket_id":ticket_id,
                     "access_code_hash": access_hash,
                     "district": district.strip(),
                     "village": village.strip(),
